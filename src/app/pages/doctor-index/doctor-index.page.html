@@ -1,9 +1,100 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>doctor-index</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-content>
+    <ion-img
+      class="title-leafs"
+      src="assets\images\leaf_1.png"
+    ></ion-img>
 
+    <div class="ion-padding">
+      <ion-grid class="ion-padding-horizontal">
+        <ion-row>
+          <ion-col>
+            <b class="title-text">Doctors</b>
+            <ion-img
+              class="title-icons"
+              src="assets\images\title_icons.svg"
+            ></ion-img>
+          </ion-col>
+          <ion-col> </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <div class="ion-padding-horizontal subtitle-text">
+        Choose to Book <br />
+        Appoinment
+      </div>
+    </div>
+
+    <br />
+    <br />
+
+    <ion-item class="ion-padding-horizontal">
+      <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Clearable input</mat-label>
+        <input matInput type="text" [(ngModel)]="value" />
+        <button
+          mat-button
+          *ngIf="value"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="value=''"
+        >
+          <mat-icon
+            ><ion-icon name="close-outline"></ion-icon
+          ></mat-icon>
+        </button>
+      </mat-form-field>
+    </ion-item>
+
+    <ion-list class="ion-padding-horizontal">
+      <ion-item *ngFor="let in of counter(5) ;let i = index">
+        <ion-thumbnail slot="start">
+          <img src="assets\images\no-image-person.png" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{i}} Finn</h2>
+          <p>Listen, I've had a pretty messed up day...</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img src="assets\images\no-image-person.png" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>Han</h2>
+          <p>I've got enough on my plate as it is, and I...</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img src="assets\images\no-image-person.png" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>Rey</h2>
+          <p>You will remove these restraints and leave...</p>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <img src="assets\images\no-image-person.png" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>Luke</h2>
+          <p>I feel the good in you, the conflict...</p>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-content>
