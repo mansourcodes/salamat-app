@@ -6,4 +6,46 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> </ion-content>
+<ion-content>
+  <ion-img
+    class="title-leafs"
+    src="assets\images\leaf_3.png"
+  ></ion-img>
+
+  <div class="ion-padding">
+    <ion-grid class="ion-padding-horizontal">
+      <ion-row>
+        <ion-col>
+          <ion-img src="assets\logo\salamat.svg"></ion-img>
+          <ion-img
+            class="title-icons"
+            src="assets\images\title_icons.svg"
+          ></ion-img>
+        </ion-col>
+        <ion-col> </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="ion-padding-horizontal title-text">
+      Booking <br />
+      Appoinment
+    </div>
+  </div>
+
+  <ion-card color="primary">
+    <ion-card-header>
+      <ion-card-title>
+        <ion-icon name="wifi" size="large"></ion-icon>
+        Specialists
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      Choose between all Doctors by the department.
+    </ion-card-content>
+    <ion-item color="primary">
+      <ion-button fill="clear" slot="end" size="large" color="light">
+        Book
+      </ion-button>
+    </ion-item>
+  </ion-card>
+</ion-content>
