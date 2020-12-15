@@ -32,20 +32,91 @@
     </div>
   </div>
 
-  <ion-card color="primary">
+  <br />
+  <br />
+  <div class="card-leafs-1-relative">
+    <ion-img
+      class="card-leafs-1"
+      src="assets\images\leaf_4.png"
+    ></ion-img>
+  </div>
+
+  <ion-card
+    color="primary"
+    class="no-margin-bottom"
+    routerLink="/clinic-index"
+  >
     <ion-card-header>
       <ion-card-title>
-        <ion-icon name="wifi" size="large"></ion-icon>
-        Specialists
+        <ion-text color="warning" size="large">
+          <h1 class="ion-no-margin">
+            <ion-icon name="hand-right"></ion-icon>
+            <ion-icon name="eye"></ion-icon>
+            <ion-icon name="bandage"></ion-icon>
+            <ion-icon name="pulse"></ion-icon>
+            <ion-icon name="heart"></ion-icon>
+            <ion-icon name="thermometer"></ion-icon>
+            Specialists
+          </h1>
+        </ion-text>
       </ion-card-title>
     </ion-card-header>
-    <ion-card-content>
+    <ion-card-content class="no-padding-bottom">
       Choose between all Doctors by the department.
     </ion-card-content>
     <ion-item color="primary">
-      <ion-button fill="clear" slot="end" size="large" color="light">
+      <ion-button fill="clear" slot="end" color="light">
         Book
       </ion-button>
     </ion-item>
   </ion-card>
+
+  <ion-grid class="ion-no-margin">
+    <ion-row>
+      <ion-col>
+        <ion-card color="primary" class="ion-no-margin">
+          <ion-card-header>
+            <ion-card-title>
+              <ion-text color="warning" size="large">
+                <h1 class="ion-no-margin">
+                  <ion-icon name="home"></ion-icon>
+                  Clinics
+                </h1>
+              </ion-text>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="no-padding-bottom">
+            Leading Health Care.
+          </ion-card-content>
+          <ion-item color="primary">
+            <ion-button fill="clear" slot="end" color="light">
+              Book
+            </ion-button>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+      <ion-col>
+        <ion-card color="primary" class="ion-no-margin">
+          <ion-card-header>
+            <ion-card-title>
+              <ion-text color="warning" size="large">
+                <h1 class="ion-no-margin">
+                  <ion-icon name="person"></ion-icon>
+                  Doctors
+                </h1>
+              </ion-text>
+            </ion-card-title>
+          </ion-card-header>
+          <ion-card-content class="no-padding-bottom">
+            The Best Specialists.
+          </ion-card-content>
+          <ion-item color="primary">
+            <ion-button fill="clear" slot="end" color="light">
+              Book
+            </ion-button>
+          </ion-item>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
