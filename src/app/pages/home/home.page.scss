@@ -9,3 +9,17 @@
   width: 26%;
   max-width: 100px;
 }
+
+@media only screen and (max-width: 335px) {
+  ion-card-title h1 {
+    font-size: 1.5rem;
+  }
+  ion-card-content {
+    font-size: 12px;
+  }
+
+  // .col-card {
+  //   width: 100%;
+  //   flex-basis: auto;
+  // }
+}

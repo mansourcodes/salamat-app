@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./clinic-index.page.scss'],
 })
 export class ClinicIndexPage implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  counter(i: number) {
+    return new Array(i);
   }
-
 }

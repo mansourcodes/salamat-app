@@ -35,64 +35,36 @@
 
     <br />
     <br />
-
-    <ion-item class="ion-padding-horizontal">
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Clearable input</mat-label>
+    <ion-item lines="none">
+      <mat-form-field
+        floatLabel="always"
+        appearance="outline"
+        class="w-100"
+      >
+        <mat-label>Search</mat-label>
         <input matInput type="text" [(ngModel)]="value" />
-        <button
-          mat-button
-          *ngIf="value"
-          matSuffix
-          mat-icon-button
-          aria-label="Clear"
-          (click)="value=''"
-        >
-          <mat-icon
-            ><ion-icon name="close-outline"></ion-icon
-          ></mat-icon>
-        </button>
+        <mat-hint>Search by name, clinic or specialist.</mat-hint>
+        <mat-icon matSuffix *ngIf="value" (click)="value=''">
+          <ion-icon name="close-outline"></ion-icon>
+        </mat-icon>
+        <mat-icon matSuffix *ngIf="!value">
+          <ion-icon name="search"></ion-icon>
+        </mat-icon>
       </mat-form-field>
     </ion-item>
 
     <ion-list class="ion-padding-horizontal">
-      <ion-item *ngFor="let in of counter(5) ;let i = index">
+      <ion-item
+        detail
+        button
+        *ngFor="let in of counter(5) ;let i = index"
+      >
         <ion-thumbnail slot="start">
-          <img src="assets\images\no-image-person.png" />
+          <img src="assets\images\no-image-doctor.png" />
         </ion-thumbnail>
         <ion-label>
-          <h2>{{i}} Finn</h2>
-          <p>Listen, I've had a pretty messed up day...</p>
-        </ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <img src="assets\images\no-image-person.png" />
-        </ion-thumbnail>
-        <ion-label>
-          <h2>Han</h2>
-          <p>I've got enough on my plate as it is, and I...</p>
-        </ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <img src="assets\images\no-image-person.png" />
-        </ion-thumbnail>
-        <ion-label>
-          <h2>Rey</h2>
-          <p>You will remove these restraints and leave...</p>
-        </ion-label>
-      </ion-item>
-
-      <ion-item>
-        <ion-thumbnail slot="start">
-          <img src="assets\images\no-image-person.png" />
-        </ion-thumbnail>
-        <ion-label>
-          <h2>Luke</h2>
-          <p>I feel the good in you, the conflict...</p>
+          <h2>Dr. Ali Sahwan</h2>
+          <p>Specialist in Eyes and Smiles</p>
         </ion-label>
       </ion-item>
     </ion-list>

@@ -8,7 +8,7 @@ import {
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: 'login',
     pathMatch: 'full',
   },
   {
@@ -51,6 +51,20 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/doctor-index/doctor-index.module').then(
         (m) => m.DoctorIndexPageModule
+      ),
+  },
+  {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/auth/login/login.module').then(
+        (m) => m.LoginPageModule
+      ),
+  },
+  {
+    path: 'otp',
+    loadChildren: () =>
+      import('./pages/auth/otp/otp.module').then(
+        (m) => m.OtpPageModule
       ),
   },
 ];

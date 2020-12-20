@@ -1,0 +1,60 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar> </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-img
+    class="title-leafs"
+    src="assets\images\leaf_3.png"
+  ></ion-img>
+
+  <div class="ion-padding">
+    <ion-grid class="ion-padding-horizontal">
+      <ion-row>
+        <ion-col>
+          <ion-img src="assets\logo\salamat.svg"></ion-img>
+          <ion-img
+            class="title-icons"
+            src="assets\images\title_icons.svg"
+          ></ion-img>
+        </ion-col>
+        <ion-col> </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="ion-padding-horizontal subtitle-text">
+      First Clinic <br />
+      Online Booking App
+    </div>
+  </div>
+
+  <div class="ion-padding">
+    <div class="ion-padding-horizontal">
+      <h4>Verify your phone number:</h4>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4">
+            <div class="phone-pre">
+              <ion-img src="assets\images\flag-bh.svg"></ion-img>
+              <span>+973</span>
+            </div>
+          </ion-col>
+          <ion-col size="8">
+            <mat-form-field
+              floatLabel="always"
+              appearance="outline"
+              class="w-100"
+            >
+              <mat-label>Phone Number</mat-label>
+              <input matInput type="text" [(ngModel)]="value" />
+            </mat-form-field>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+      <ion-button routerLink="/otp">Send</ion-button>
+      <ion-button fill="clear" routerLink="/home">Skip</ion-button>
+    </div>
+  </div>
+</ion-content>

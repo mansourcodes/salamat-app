@@ -4,9 +4,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ClinicIndexPageRoutingModule } from './clinic-index-routing.module';
+import { OtpPageRoutingModule } from './otp-routing.module';
 
-import { ClinicIndexPage } from './clinic-index.page';
+import { OtpPage } from './otp.page';
 import { MaterialMiniFormModule } from 'src/app/services/utilities/material/material-mini-form.module';
 
 @NgModule({
@@ -14,10 +14,10 @@ import { MaterialMiniFormModule } from 'src/app/services/utilities/material/mate
     CommonModule,
     FormsModule,
     IonicModule,
-    ClinicIndexPageRoutingModule,
+    OtpPageRoutingModule,
     MaterialMiniFormModule,
     ReactiveFormsModule,
   ],
-  declarations: [ClinicIndexPage],
+  declarations: [OtpPage],
 })
-export class ClinicIndexPageModule {}
+export class OtpPageModule {}
