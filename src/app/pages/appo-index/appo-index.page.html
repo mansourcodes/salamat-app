@@ -1,9 +1,57 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>appo-index</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <ion-content>
+    <div class="pos-relative">
+      <ion-img
+        class="title-leafs"
+        src="assets\images\leaf_4.png"
+      ></ion-img>
 
+      <div class="ion-padding leaftitle">
+        <ion-grid class="ion-padding-horizontal">
+          <ion-row>
+            <ion-col>
+              <b class="title-text"> Appointments</b>
+              <ion-img
+                class="title-icons"
+                src="assets\images\title_icons.svg"
+              ></ion-img>
+            </ion-col>
+            <ion-col> </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <div class="ion-padding-horizontal subtitle-text">
+          We hope you are always well
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <ion-list class="ion-padding-horizontal">
+      <ion-item
+        detail
+        button
+        *ngFor="let in of counter(5) ;let i = index"
+        routerLink="/appo-single"
+      >
+        <ion-note class="date-and-time" slot="start" color="primary">
+          Sun 28/12<br />
+          10:15am
+        </ion-note>
+        <ion-label>
+          <h2>Fatima Mansour Alsawad</h2>
+          <ion-note> Aser Clinic, Dr. Ali alasare </ion-note>
+        </ion-label>
+        <ion-badge slot="end">new</ion-badge>
+      </ion-item>
+    </ion-list>
+  </ion-content>
 </ion-content>

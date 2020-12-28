@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./appo-index.page.scss'],
 })
 export class AppoIndexPage implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  counter(i: number) {
+    return new Array(i);
   }
-
 }

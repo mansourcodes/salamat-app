@@ -27,9 +27,22 @@
 
 @import 'assets/fonts/Tajawal/stylesheet.css';
 
-.title-icons {
-  width: 55px;
-  padding: 5px;
+.leaftitle {
+  position: relative;
+  z-index: 10;
+
+  .title-text {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+  .title-icons {
+    width: 55px;
+    padding: 5px;
+  }
+  .subtitle-text {
+    font-size: 2.5rem;
+    line-height: 2.5rem;
+  }
 }
 
 .title-leafs {
@@ -37,15 +50,6 @@
   top: var(--ion-padding, 16px);
   right: var(--ion-padding, 16px);
   width: 40%;
-}
-
-.title-text {
-  font-size: 3rem;
-  line-height: 3rem;
-}
-.subtitle-text {
-  font-size: 2.5rem;
-  line-height: 2.5rem;
 }
 
 .no-margin-bottom {

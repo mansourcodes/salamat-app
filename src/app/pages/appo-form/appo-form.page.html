@@ -42,11 +42,11 @@
       class="title-leafs"
       src="assets\images\leaf_1.png"
     ></ion-img>
-    <div class="ion-padding">
+    <div class="ion-padding leaftitle">
       <ion-grid>
         <ion-row>
           <ion-col>
-            <b class="title-text">Date & Time</b>
+            <b class="title-text">Choose <br />Date & Time</b>
             <ion-img
               class="title-icons"
               src="assets\images\title_icons.svg"
@@ -88,12 +88,16 @@
   </ion-list>
 
   <div class="ion-padding-horizontal">
-    <h4>Personal Details:</h4>
+    <h4>Patient Details:</h4>
   </div>
   <ion-list class="ion-padding-horizontal">
     <ion-item lines="full">
+      <ion-label>Patient Name:</ion-label>
+      <ion-input placeholder="Enter Patient Name ..."></ion-input>
+    </ion-item>
+    <ion-item lines="full">
       <ion-label>CPR:</ion-label>
-      <ion-input placeholder="Enter Your CPR ..."></ion-input>
+      <ion-input placeholder="Enter Patient CPR ..."></ion-input>
     </ion-item>
 
     <ion-item lines="full">
@@ -120,7 +124,7 @@
     </ion-item>
   </ion-list>
 
-  <section class="ion-padding-horizontal">
+  <section class="ion-padding-horizontal" routerLink="/appo-single">
     <ion-button expand="block" color="primary">Book Now</ion-button>
   </section>
 

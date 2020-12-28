@@ -1,9 +1,122 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>appo-single</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/appo-index"></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="pos-relative">
+    <ion-img
+      class="title-leafs"
+      src="assets\images\leaf_1.png"
+    ></ion-img>
+    <div class="ion-padding leaftitle">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <b class="title-text">
+              <ion-icon
+                color="primary"
+                class="ion-no-margin"
+                name="checkmark-circle-sharp"
+              ></ion-icon>
+              <ion-img
+                class="logo"
+                src="assets\logo\salamat.svg"
+              ></ion-img>
+            </b>
+            <ion-img
+              class="title-icons"
+              src="assets\images\title_icons.svg"
+            ></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div class="ion-padding-horizontal title-text">
+        Appoinment <br />
+        Booked
+      </div>
+    </div>
+  </div>
 
+  <br />
+
+  <ion-list class="ion-padding-horizontal">
+    <ion-item lines="full">
+      <ion-icon
+        name="person-circle-sharp"
+        slot="start"
+        size="small"
+        color="dark"
+      ></ion-icon>
+      <ion-label> Fatima Mansour Alsawad </ion-label>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-icon
+        slot="start"
+        size="small"
+        color="dark"
+        name="call-sharp"
+      ></ion-icon>
+      <ion-label>+973 36371725</ion-label>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-icon
+        name="calendar-sharp"
+        slot="start"
+        size="small"
+        color="dark"
+      ></ion-icon>
+      <ion-label>
+        Sat 28/12/2020
+        <ion-icon name="time-sharp"></ion-icon> 10:00 AM
+      </ion-label>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-icon
+        slot="start"
+        size="small"
+        color="dark"
+        name="location-sharp"
+      ></ion-icon>
+      <ion-label>Clinic: Aster Manama </ion-label>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-icon
+        slot="start"
+        size="small"
+        color="dark"
+        name="medkit-sharp"
+      ></ion-icon>
+      <ion-label>Dr. Ali alasare</ion-label>
+    </ion-item>
+  </ion-list>
+
+  <section class="ion-text-center ion-padding">
+    <ion-button color="primary">
+      <ion-icon
+        name="chevron-down-circle-sharp"
+        slot="start"
+      ></ion-icon>
+      Save A Copy
+    </ion-button>
+    <ion-button color="light">
+      <ion-icon name="share-social-sharp" slot="start"></ion-icon>
+      Share
+    </ion-button>
+  </section>
+
+  <div class="ion-text-center ion-padding">
+    <sub>
+      Please arrive at least 20 minutes before the appointment. </sub
+    ><br />
+    You can directly arrive to the clinic at the specified date and
+    time. to change the Appoinment
+    <a (click)="callClinic()"> call the clinic </a>.
+  </div>
+
+  <br />
 </ion-content>

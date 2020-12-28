@@ -13,7 +13,7 @@
       src="assets\images\leaf_4.png"
     ></ion-img>
 
-    <div class="ion-padding">
+    <div class="ion-padding leaftitle">
       <ion-grid class="ion-padding-horizontal">
         <ion-row>
           <ion-col>
@@ -58,6 +58,7 @@
         detail
         button
         *ngFor="let in of counter(25) ;let i = index"
+        routerLink="/appo-form"
       >
         <ion-thumbnail slot="start">
           <img src="assets\images\no-image-clinic.png" />
