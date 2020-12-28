@@ -18,16 +18,13 @@ export class SettingsPage implements OnInit {
 
   ngOnInit() {
     this.isLoading = true;
-    this.settingsService.getSettings().then((settings) => {
-      this.settigns = settings;
-      console.log(settings);
+    this.settingsService.settings.subscribe((settigns) => {
       this.isLoading = false;
+      this.settigns = { ...settigns };
     });
   }
 
   updateSettings() {
-    console.log('ionChange');
-
     this.settingsService.setSettings(this.settigns);
   }
 

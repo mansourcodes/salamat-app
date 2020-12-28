@@ -3,11 +3,17 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
+  appVersion: '0.0.8',
   production: false,
   apiUrl: '',
 
   storageKeys: {
     localSettings: 'LOCAL_SETTINGS',
+  },
+
+  defaultSettings: {
+    appVersion: '0.0.0',
+    language: 'ar',
   },
 };
 
