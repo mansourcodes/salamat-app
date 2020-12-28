@@ -6,4 +6,80 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content> settings </ion-content>
+<ion-content>
+  <div class="pos-relative">
+    <ion-img
+      class="title-leafs"
+      src="assets\images\leaf_3.png"
+    ></ion-img>
+    <div class="ion-padding leaftitle">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <b class="title-text">Settings</b>
+            <ion-img
+              class="title-icons"
+              src="assets\images\title_icons.svg"
+            ></ion-img>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </div>
+
+  <!-- form -->
+  <div class="ion-padding-horizontal">
+    <h4>System Settings:</h4>
+  </div>
+  <ion-list class="ion-padding-horizontal">
+    <ion-item lines="full">
+      <ion-label>language</ion-label>
+      <ion-select value="ar" okText="Done" cancelText="Dismiss">
+        <ion-select-option value="ar">عربي</ion-select-option>
+        <ion-select-option value="en">English</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding-horizontal">
+    <h4>App Information:</h4>
+  </div>
+  <ion-list class="ion-padding-horizontal">
+    <ion-item lines="full">
+      <ion-icon name="logo-instagram" slot="start"></ion-icon>
+      <ion-label>Follow us on instagram</ion-label>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-icon name="logo-youtube" slot="start"></ion-icon>
+      <ion-label>Follow us on youtube</ion-label>
+    </ion-item>
+    <ion-item lines="full">
+      <ion-icon name="logo-twitter" slot="start"></ion-icon>
+      <ion-label>Follow us on twitter</ion-label>
+    </ion-item>
+    <ion-item lines="full" routerLink="/help">
+      <ion-icon name="help-outline" slot="start"></ion-icon>
+      <ion-label> Help </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <div class="ion-padding-horizontal">
+    <h4>Account Details:</h4>
+  </div>
+  <ion-list class="ion-padding-horizontal">
+    <ion-item lines="full">
+      <ion-label>
+        Change Phone Number<br />
+        <ion-note>+973 36371726</ion-note>
+      </ion-label>
+
+      <ion-button color="light" (click)="logoutConfirm()" slot="end">
+        Logout
+      </ion-button>
+    </ion-item>
+  </ion-list>
+
+  <p class="ion-text-center">salamat 0.0.1</p>
+
+  <br />
+</ion-content>
