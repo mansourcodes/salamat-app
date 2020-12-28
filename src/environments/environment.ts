@@ -5,6 +5,10 @@
 export const environment = {
   production: false,
   apiUrl: '',
+
+  storageKeys: {
+    localSettings: 'LOCAL_SETTINGS',
+  },
 };
 
 /*

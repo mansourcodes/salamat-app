@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { SettingsService } from 'src/app/services/utilities/settings.service';
 
 @Component({
   selector: 'app-settings',
@@ -7,9 +8,28 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
-  constructor(public alertController: AlertController) {}
+  isLoading = true;
+  settigns: any;
 
-  ngOnInit() {}
+  constructor(
+    public alertController: AlertController,
+    private settingsService: SettingsService
+  ) {}
+
+  ngOnInit() {
+    this.isLoading = true;
+    this.settingsService.getSettings().then((settings) => {
+      this.settigns = settings;
+      console.log(settings);
+      this.isLoading = false;
+    });
+  }
+
+  updateSettings() {
+    console.log('ionChange');
+
+    this.settingsService.setSettings(this.settigns);
+  }
 
   async logoutConfirm() {
     const alert = await this.alertController.create({

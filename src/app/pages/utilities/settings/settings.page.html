@@ -16,6 +16,7 @@
       <ion-grid>
         <ion-row>
           <ion-col>
+            {{ 'salamat' | translate }}
             <b class="title-text">Settings</b>
             <ion-img
               class="title-icons"
@@ -31,10 +32,15 @@
   <div class="ion-padding-horizontal">
     <h4>System Settings:</h4>
   </div>
-  <ion-list class="ion-padding-horizontal">
+  <ion-list *ngIf="!isLoading" class="ion-padding-horizontal">
     <ion-item lines="full">
       <ion-label>language</ion-label>
-      <ion-select value="ar" okText="Done" cancelText="Dismiss">
+      <ion-select
+        [(ngModel)]="settigns.language"
+        (ionChange)="updateSettings($event)"
+        okText="Done"
+        cancelText="Dismiss"
+      >
         <ion-select-option value="ar">عربي</ion-select-option>
         <ion-select-option value="en">English</ion-select-option>
       </ion-select>

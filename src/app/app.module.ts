@@ -10,6 +10,18 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { MainmenuComponent } from './components/mainmenu/mainmenu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+import {
+  TranslateModule,
+  TranslateLoader,
+} from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { IonicStorageModule } from '@ionic/storage';
+
+export function createTranslateHttpLoader(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
   declarations: [AppComponent, MainmenuComponent],
@@ -19,6 +31,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     IonicModule.forRoot({ mode: 'md' }),
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
+    IonicStorageModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: createTranslateHttpLoader,
+        deps: [HttpClient],
+      },
+    }),
   ],
   providers: [
     StatusBar,
