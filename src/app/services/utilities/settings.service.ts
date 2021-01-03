@@ -5,7 +5,8 @@ import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { SemVer } from '@types/semver';
+import * as moment from 'moment';
+import * as semver from 'semver';
 
 @Injectable({
   providedIn: 'root',
@@ -28,8 +29,7 @@ export class SettingsService {
   constructor(
     private translate: TranslateService,
     private storage: Storage,
-    private semver: SemVer
-  ) {}
+  ) { }
 
   init() {
     const browserLanguage = this.translate.getBrowserLang();
@@ -42,11 +42,29 @@ export class SettingsService {
           storedSettings = this.getDefaultSettings();
         }
 
+
+        // semver
         console.log(environment.appVersion);
         console.log(storedSettings.appVersion);
-        // semver
+        let compareResult = 'none';
 
-        console.log(this.semver.valid('1.2.3'));
+        console.log(moment.locale()); // en
+
+
+        compareResult = semver.diff(environment.appVersion, storedSettings.appVersion);
+        console.log(compareResult);
+
+        compareResult = semver.diff('0.0.2', '0.0.3');
+        console.log(compareResult);
+
+        compareResult = semver.diff('0.0.2', '0.0.2');
+        console.log(compareResult);
+
+        compareResult = semver.diff('0.0.2', '0.1.3');
+        console.log(compareResult);
+
+        compareResult = semver.diff('0.0.2', '2.1.3');
+        console.log(compareResult);
 
         this.setSettings(storedSettings);
         console.info('init settings');

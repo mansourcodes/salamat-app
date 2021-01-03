@@ -14,7 +14,7 @@ export class SettingsPage implements OnInit {
   constructor(
     public alertController: AlertController,
     private settingsService: SettingsService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.isLoading = true;
@@ -24,7 +24,7 @@ export class SettingsPage implements OnInit {
     });
   }
 
-  updateSettings() {
+  updateSettings(event) {
     this.settingsService.setSettings(this.settigns);
   }
 

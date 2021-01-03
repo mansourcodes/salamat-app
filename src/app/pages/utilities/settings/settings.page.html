@@ -8,16 +8,12 @@
 
 <ion-content>
   <div class="pos-relative">
-    <ion-img
-      class="title-leafs"
-      src="assets\images\leaf_3.png"
-    ></ion-img>
+    <ion-img class="title-leafs" src="assets\images\leaf_3.png"></ion-img>
     <div class="ion-padding leaftitle">
       <ion-grid>
         <ion-row>
           <ion-col>
-            {{ 'salamat' | translate }}
-            <b class="title-text">Settings</b>
+            <b class="title-text"> {{ 'Settings' | translate }}</b>
             <ion-img
               class="title-icons"
               src="assets\images\title_icons.svg"
@@ -46,7 +42,6 @@
       </ion-select>
     </ion-item>
   </ion-list>
-  {{settigns| json}}
   <div class="ion-padding-horizontal">
     <h4>App Information:</h4>
   </div>
@@ -79,7 +74,8 @@
         <ion-note>+973 36371726</ion-note>
       </ion-label>
 
-      <ion-button color="light" (click)="logoutConfirm()" slot="end">
+      <ion-button size="default" color="light" (click)="logoutConfirm()">
+        <ion-icon name="log-out-outline" slot="start"></ion-icon>
         Logout
       </ion-button>
     </ion-item>

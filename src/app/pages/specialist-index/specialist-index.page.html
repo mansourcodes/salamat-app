@@ -8,12 +8,9 @@
 
 <ion-content>
   <ion-content>
-    <ion-img
-      class="title-leafs"
-      src="assets\images\leaf_4.png"
-    ></ion-img>
+    <ion-img class="title-leafs" src="assets\images\leaf_4.png"></ion-img>
 
-    <div class="ion-padding">
+    <div class="ion-padding leaftitle">
       <ion-grid class="ion-padding-horizontal">
         <ion-row>
           <ion-col>
@@ -36,11 +33,7 @@
     <br />
     <br />
     <ion-item lines="none">
-      <mat-form-field
-        floatLabel="always"
-        appearance="outline"
-        class="w-100"
-      >
+      <mat-form-field floatLabel="always" appearance="outline" class="w-100">
         <mat-label>Search</mat-label>
         <input matInput type="text" [(ngModel)]="value" />
         <mat-hint>Search by Specialists name.</mat-hint>
