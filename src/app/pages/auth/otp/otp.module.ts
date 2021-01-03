@@ -20,4 +20,5 @@ import { MaterialMiniFormModule } from 'src/app/services/utilities/material/mate
   ],
   declarations: [OtpPage],
 })
-export class OtpPageModule {}
+export class OtpPageModule {
+}

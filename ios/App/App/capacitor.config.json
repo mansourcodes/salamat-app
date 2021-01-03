@@ -1,17 +1,13 @@
 {
-  "appId": "io.ionic.starter",
+  "appId": "com.salamat.salamat",
   "appName": "salamat",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
   "plugins": {
     "SplashScreen": {
-      "launchShowDuration": 0
+      "launchAutoHide": false
     }
   },
-  "cordova": {},
-  "server": {
-    "url": "http://localhost:8100",
-    "cleartext": true
-  }
+  "cordova": {}
 }

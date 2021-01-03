@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-
 import { Platform } from '@ionic/angular';
-import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-import { StatusBar } from '@ionic-native/status-bar/ngx';
+// import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { SettingsService } from './services/utilities/settings.service';
 
+import { Plugins } from '@capacitor/core';
+const { SplashScreen } = Plugins;
 
 @Component({
   selector: 'app-root',
@@ -14,8 +14,8 @@ import { SettingsService } from './services/utilities/settings.service';
 export class AppComponent implements OnInit {
   constructor(
     private platform: Platform,
-    private splashScreen: SplashScreen,
-    private statusBar: StatusBar,
+    // private splashScreen: SplashScreen,
+    // private statusBar: StatusBar,
     private settingsService: SettingsService,
   ) {
     this.initializeApp();
@@ -23,12 +23,16 @@ export class AppComponent implements OnInit {
 
   initializeApp() {
 
+    console.log('init');
 
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.splashScreen.hide();
+      console.log('ready');
+      // this.statusBar.styleDefault();
+      // this.splashScreen.hide();
+      // SplashScreen.hide();
 
     });
+    console.log('after init');
 
     this.settingsService.init();
   }

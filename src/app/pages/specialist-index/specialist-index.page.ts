@@ -6,9 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./specialist-index.page.scss'],
 })
 export class SpecialistIndexPage implements OnInit {
-  constructor() {}
 
-  ngOnInit() {}
+  value;
+
+  constructor() { }
+
+  ngOnInit() { }
 
   counter(i: number) {
     return new Array(i);

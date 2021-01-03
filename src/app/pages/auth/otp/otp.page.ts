@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./otp.page.scss'],
 })
 export class OtpPage implements OnInit {
-
+  value;
   constructor() { }
 
   ngOnInit() {

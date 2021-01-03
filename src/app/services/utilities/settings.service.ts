@@ -44,30 +44,14 @@ export class SettingsService {
 
 
         // semver
-        console.log(environment.appVersion);
-        console.log(storedSettings.appVersion);
+        console.log('semver');
+
         let compareResult = 'none';
-
-        console.log(moment.locale()); // en
-
-
         compareResult = semver.diff(environment.appVersion, storedSettings.appVersion);
         console.log(compareResult);
 
-        compareResult = semver.diff('0.0.2', '0.0.3');
-        console.log(compareResult);
-
-        compareResult = semver.diff('0.0.2', '0.0.2');
-        console.log(compareResult);
-
-        compareResult = semver.diff('0.0.2', '0.1.3');
-        console.log(compareResult);
-
-        compareResult = semver.diff('0.0.2', '2.1.3');
-        console.log(compareResult);
-
         this.setSettings(storedSettings);
-        console.info('init settings');
+        console.info('init settings: Done');
       });
   }
 
