@@ -48,4 +48,4 @@ export function createTranslateHttpLoader(http: HttpClient) {
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

@@ -70,12 +70,8 @@
   --ion-text-color: var(--ion-color-light-contrast, #000);
   --ion-font-family: 'Tajawal', Roboto, 'Helvetica Neue', sans-serif;
 }
-
+/** 
 @media (prefers-color-scheme: dark) {
-  /*
-   * Dark Colors
-   * -------------------------------------------
-   */
 
   body {
     --ion-color-primary: #428cff;
@@ -142,10 +138,6 @@
     --ion-color-light-tint: #383a3e;
   }
 
-  /*
-   * iOS Dark Theme
-   * -------------------------------------------
-   */
 
   .ios body {
     --ion-background-color: #282828;
@@ -181,10 +173,7 @@
     --ion-card-background: #1c1c1d;
   }
 
-  /*
-   * Material Design Dark Theme
-   * -------------------------------------------
-   */
+
 
   .md body {
     --ion-background-color: #121212;
@@ -224,3 +213,5 @@
     --ion-card-background: #1e1e1e;
   }
 }
+
+// **/
