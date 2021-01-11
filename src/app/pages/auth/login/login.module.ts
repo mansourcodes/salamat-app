@@ -8,6 +8,7 @@ import { LoginPageRoutingModule } from './login-routing.module';
 
 import { LoginPage } from './login.page';
 import { MaterialMiniFormModule } from 'src/app/services/utilities/material/material-mini-form.module';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   imports: [
@@ -17,6 +18,7 @@ import { MaterialMiniFormModule } from 'src/app/services/utilities/material/mate
     LoginPageRoutingModule,
     MaterialMiniFormModule,
     ReactiveFormsModule,
+    TranslateModule,
   ],
   declarations: [LoginPage],
 })

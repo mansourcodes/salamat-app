@@ -5,7 +5,6 @@ import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import * as moment from 'moment';
 import * as semver from 'semver';
 
 @Injectable({
@@ -13,6 +12,11 @@ import * as semver from 'semver';
 })
 export class SettingsService {
   private _settings = new BehaviorSubject<any>(null);
+
+  public languageList = [
+    { text: 'English', value: 'en', flag: 'assets/flags/en' },
+    { text: 'عربي', value: 'ar', flag: 'assets/flags/ar' },
+  ];
 
   get settings() {
     return this._settings.asObservable().pipe(
@@ -28,8 +32,8 @@ export class SettingsService {
 
   constructor(
     private translate: TranslateService,
-    private storage: Storage,
-  ) { }
+    private storage: Storage
+  ) {}
 
   init() {
     const browserLanguage = this.translate.getBrowserLang();
@@ -41,18 +45,21 @@ export class SettingsService {
         if (!storedSettings) {
           storedSettings = this.getDefaultSettings();
         }
-
-
-        // semver
-        console.log('semver');
-
-        let compareResult = 'none';
-        compareResult = semver.diff(environment.appVersion, storedSettings.appVersion);
-        console.log(compareResult);
-
         this.setSettings(storedSettings);
         console.info('init settings: Done');
       });
+  }
+
+  checkVersion() {
+    //TODO: call http
+    let api;
+    console.log('semver');
+
+    let compareResult = 'none';
+    compareResult = semver.diff(
+      environment.appVersion,
+      api.appVersion
+    );
   }
 
   setSettings(newSettings) {
@@ -65,14 +72,6 @@ export class SettingsService {
       environment.storageKeys.localSettings,
       newSettings
     );
-  }
-
-  getLanguageList() {
-    return [
-      { text: 'English', value: 'en', flag: 'assets/flags/en' },
-      { text: 'عربي', value: 'ar', flag: 'assets/flags/en' },
-      { text: 'hindi', value: 'hin', flag: 'assets/flags/en' },
-    ];
   }
 
   getDefaultSettings() {

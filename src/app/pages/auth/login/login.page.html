@@ -1,9 +1,27 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar> </ion-toolbar>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-select
+        [(ngModel)]="settigns.language"
+        (ionChange)="updateSettings($event)"
+        okText="Done"
+        cancelText="Cancel"
+      >
+        <ion-select-option
+          *ngFor="let lang of settingsService.languageList"
+          [value]="lang.value"
+          >{{lang.text}}</ion-select-option
+        >
+      </ion-select>
+    </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-img class="title-leafs" src="assets\images\leaf_3.png"></ion-img>
+  <ion-img
+    class="title-leafs"
+    src="assets\images\leaf_3.png"
+  ></ion-img>
 
   <div class="ion-padding leaftitle">
     <ion-grid class="ion-padding-horizontal">
@@ -19,10 +37,10 @@
       </ion-row>
     </ion-grid>
 
-    <div class="ion-padding-horizontal subtitle-text">
-      First Clinic <br />
-      Online Booking App
-    </div>
+    <div
+      class="ion-padding-horizontal subtitle-text"
+      [innerHTML]="'login.subtitle' | translate"
+    ></div>
   </div>
 
   <div class="ion-padding">

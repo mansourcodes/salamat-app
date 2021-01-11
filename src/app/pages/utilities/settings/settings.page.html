@@ -8,7 +8,10 @@
 
 <ion-content>
   <div class="pos-relative">
-    <ion-img class="title-leafs" src="assets\images\leaf_3.png"></ion-img>
+    <ion-img
+      class="title-leafs"
+      src="assets\images\leaf_3.png"
+    ></ion-img>
     <div class="ion-padding leaftitle">
       <ion-grid>
         <ion-row>
@@ -37,8 +40,11 @@
         okText="Done"
         cancelText="Cancel"
       >
-        <ion-select-option value="ar">عربي</ion-select-option>
-        <ion-select-option value="en">English</ion-select-option>
+        <ion-select-option
+          *ngFor="let lang of settingsService.languageList"
+          [value]="lang.value"
+          >{{lang.text}}</ion-select-option
+        >
       </ion-select>
     </ion-item>
   </ion-list>
@@ -74,7 +80,11 @@
         <ion-note>+973 36371726</ion-note>
       </ion-label>
 
-      <ion-button size="default" color="light" (click)="logoutConfirm()">
+      <ion-button
+        size="default"
+        color="light"
+        (click)="logoutConfirm()"
+      >
         <ion-icon name="log-out-outline" slot="start"></ion-icon>
         Logout
       </ion-button>
