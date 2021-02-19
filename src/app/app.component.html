@@ -1,4 +1,5 @@
 <ion-app>
+  <loading-spinner *ngIf="showLoading$ | async"></loading-spinner>
   <mainmenu></mainmenu>
   <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>

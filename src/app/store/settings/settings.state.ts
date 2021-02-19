@@ -1,15 +1,15 @@
-import { DoctorInterface } from "src/app/services/doctors/doctor";
+import { SettingInterface } from "src/app/services/settings/setting";
 
 
-export const doctorsFeatureKey = 'doctors';
+export const settingsFeatureKey = 'settings';
 
 
-export interface DoctorsState {
-    doctors: DoctorInterface[];
+export interface SettingsState {
+    settings: SettingInterface[];
 }
 
-export const initialState: DoctorsState = {
-    doctors: [
+export const initialState: SettingsState = {
+    settings: [
         {
             _id: '1',
             name: 'Dr. Ali Ahmed',

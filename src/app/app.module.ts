@@ -19,13 +19,14 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicStorageModule } from '@ionic/storage';
 import { StoreModule } from '@ngrx/store';
 import { appReducers } from './store/app.state';
+import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
 
 export function createTranslateHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
 @NgModule({
-  declarations: [AppComponent, MainmenuComponent],
+  declarations: [AppComponent, MainmenuComponent, LoadingSpinnerComponent],
   entryComponents: [],
   imports: [
     BrowserModule,

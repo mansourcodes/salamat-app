@@ -1,8 +1,11 @@
 import { createAction, props } from '@ngrx/store';
 
-
-
 export const setLoadingSpinner = createAction(
-  '[Shared] login a Shared',
+  '[Shared] set Loading Spinner',
   props<{ status: boolean }>()
+);
+
+export const setErrorMessage = createAction(
+  '[Shared] set error message ',
+  props<{ message: string }>()
 );
