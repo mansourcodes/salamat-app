@@ -9,6 +9,9 @@ import { settingsReducer } from './settings/settings.reducer';
 import { settingsFeatureKey, SettingsState } from './settings/settings.state';
 import { sharedReducer } from './shared/shared.reducer';
 import { sharedFeatureKey, SharedState } from './shared/shared.state';
+import { SpecialityEffects } from './specialities/specialities.effects';
+import { specialitiesReducer } from './specialities/specialities.reducer';
+import { specialitiesFeatureKey, SpecialitiesState } from './specialities/specialities.state';
 
 
 export interface AppState {
@@ -16,6 +19,7 @@ export interface AppState {
   [doctorsFeatureKey]: DoctorsState;
   [settingsFeatureKey]: SettingsState;
   [clinicsFeatureKey]: ClinicsState;
+  [specialitiesFeatureKey]: SpecialitiesState;
 
 
 }
@@ -25,6 +29,7 @@ export const appReducers = {
   [doctorsFeatureKey]: doctorsReducer,
   [settingsFeatureKey]: settingsReducer,
   [clinicsFeatureKey]: clinicsReducer,
+  [specialitiesFeatureKey]: specialitiesReducer,
 
 };
 
@@ -32,5 +37,6 @@ export const appReducers = {
 export const AppEffects = [
   DoctorEffects,
   SettingEffects,
-  ClinicEffects
+  ClinicEffects,
+  SpecialityEffects
 ]
