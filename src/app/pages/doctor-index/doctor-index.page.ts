@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { DoctorInterface } from 'src/app/services/doctors/doctor';
 import { AppState } from 'src/app/store/app.state';
+import { loadDoctors } from 'src/app/store/doctors/doctors.actions';
 import { getDoctors } from 'src/app/store/doctors/doctors.selectors';
 
 @Component({
@@ -18,6 +19,8 @@ export class DoctorIndexPage implements OnInit {
   ngOnInit() {
 
     this.doctors$ = this.store.select(getDoctors);
+    this.store.dispatch(loadDoctors());
+
   }
 
   counter(i: number) {

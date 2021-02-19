@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/store/app.state';
 
 @Component({
   selector: 'app-appo-index',
@@ -6,11 +8,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./appo-index.page.scss'],
 })
 export class AppoIndexPage implements OnInit {
-  constructor() {}
+  constructor(private store: Store<AppState>) { }
 
-  ngOnInit() {}
-
-  counter(i: number) {
-    return new Array(i);
+  ngOnInit() {
   }
+
 }
