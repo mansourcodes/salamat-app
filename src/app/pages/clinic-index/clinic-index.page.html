@@ -8,10 +8,7 @@
 
 <ion-content>
   <ion-content>
-    <ion-img
-      class="title-leafs"
-      src="assets\images\leaf_4.png"
-    ></ion-img>
+    <ion-img class="title-leafs" src="assets\images\leaf_4.png"></ion-img>
 
     <div class="ion-padding leaftitle">
       <ion-grid class="ion-padding-horizontal">
@@ -36,18 +33,14 @@
     <br />
     <br />
     <ion-item lines="none">
-      <mat-form-field
-        floatLabel="always"
-        appearance="outline"
-        class="w-100"
-      >
+      <mat-form-field floatLabel="always" appearance="outline" class="w-100">
         <mat-label>Search</mat-label>
-        <input matInput type="text" [(ngModel)]="value" />
-        <mat-hint>Search by clinic name or location.</mat-hint>
-        <mat-icon matSuffix *ngIf="value" (click)="value=''">
+        <input matInput type="text" [(ngModel)]="searchValue" />
+        <mat-hint>Search by clinic name.</mat-hint>
+        <mat-icon matSuffix *ngIf="searchValue" (click)="value=''">
           <ion-icon name="close-outline"></ion-icon>
         </mat-icon>
-        <mat-icon matSuffix *ngIf="!value">
+        <mat-icon matSuffix *ngIf="!searchValue">
           <ion-icon name="search"></ion-icon>
         </mat-icon>
       </mat-form-field>
@@ -57,22 +50,15 @@
       <ion-item
         detail
         button
-        *ngFor="let in of counter(25) ;let i = index"
+        *ngFor="let clinic of clinics$ | async"
         routerLink="/appo-form"
       >
         <ion-thumbnail slot="start">
           <img src="assets\images\no-image-clinic.png" />
         </ion-thumbnail>
         <ion-label>
-          <h2>Aser Clinic</h2>
-          <p *ngIf="i % 2">
-            <ion-icon name="location-sharp"></ion-icon> Manama
-            <br />
-            <ion-icon name="time-outline"></ion-icon> 24 Hours
-          </p>
-          <p *ngIf="i % 2 == 0">
-            <ion-icon name="location-sharp"></ion-icon> 2 Branchs
-          </p>
+          <h2>{{clinic.name}}</h2>
+          <h2>{{clinic.name_alt}}</h2>
         </ion-label>
       </ion-item>
     </ion-list>

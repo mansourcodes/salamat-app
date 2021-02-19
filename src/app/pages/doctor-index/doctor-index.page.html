@@ -35,12 +35,12 @@
     <ion-item lines="none">
       <mat-form-field floatLabel="always" appearance="outline" class="w-100">
         <mat-label>Search</mat-label>
-        <input matInput type="text" [(ngModel)]="value" />
+        <input matInput type="text" [(ngModel)]="searchValue" />
         <mat-hint>Search by name, clinic or specialist.</mat-hint>
-        <mat-icon matSuffix *ngIf="value" (click)="value=''">
+        <mat-icon matSuffix *ngIf="searchValue" (click)="value=''">
           <ion-icon name="close-outline"></ion-icon>
         </mat-icon>
-        <mat-icon matSuffix *ngIf="!value">
+        <mat-icon matSuffix *ngIf="!searchValue">
           <ion-icon name="search"></ion-icon>
         </mat-icon>
       </mat-form-field>
