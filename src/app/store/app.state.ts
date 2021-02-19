@@ -1,3 +1,6 @@
+import { BranchEffects } from './branches/branches.effects';
+import { branchesReducer } from './branches/branches.reducer';
+import { branchesFeatureKey, BranchesState } from './branches/branches.state';
 import { ClinicEffects } from './clinics/clinics.effects';
 import { clinicsReducer } from './clinics/clinics.reducer';
 import { clinicsFeatureKey, ClinicsState } from './clinics/clinics.state';
@@ -20,6 +23,7 @@ export interface AppState {
   [settingsFeatureKey]: SettingsState;
   [clinicsFeatureKey]: ClinicsState;
   [specialitiesFeatureKey]: SpecialitiesState;
+  [branchesFeatureKey]: BranchesState;
 
 
 }
@@ -30,6 +34,7 @@ export const appReducers = {
   [settingsFeatureKey]: settingsReducer,
   [clinicsFeatureKey]: clinicsReducer,
   [specialitiesFeatureKey]: specialitiesReducer,
+  [branchesFeatureKey]: branchesReducer,
 
 };
 
@@ -38,5 +43,6 @@ export const AppEffects = [
   DoctorEffects,
   SettingEffects,
   ClinicEffects,
-  SpecialityEffects
+  SpecialityEffects,
+  BranchEffects
 ]

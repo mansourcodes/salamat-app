@@ -78,7 +78,11 @@ const routes: Routes = [
   {
     path: 'help',
     loadChildren: () => import('./pages/utilities/help/help.module').then(m => m.HelpPageModule)
+  },  {
+    path: 'branch-index',
+    loadChildren: () => import('./pages/branch-index/branch-index.module').then( m => m.BranchIndexPageModule)
   },
+
 
 ];
 

@@ -32,11 +32,11 @@
 
     <br />
     <br />
-    <ion-item lines="none">
+    <!-- <ion-item lines="none">
       <mat-form-field floatLabel="always" appearance="outline" class="w-100">
         <mat-label>Search</mat-label>
         <input matInput type="text" [(ngModel)]="searchValue" />
-        <mat-hint>Search by clinic name.</mat-hint>
+        <mat-hint>Search by branch name.</mat-hint>
         <mat-icon matSuffix *ngIf="searchValue" (click)="value=''">
           <ion-icon name="close-outline"></ion-icon>
         </mat-icon>
@@ -44,21 +44,23 @@
           <ion-icon name="search"></ion-icon>
         </mat-icon>
       </mat-form-field>
-    </ion-item>
+    </ion-item> -->
 
     <ion-list class="ion-padding-horizontal">
       <ion-item
         detail
         button
-        *ngFor="let clinic of clinics$ | async"
-        routerLink="/branch-index"
+        *ngFor="let branch of branches$ | async"
+        routerLink="/appo-form"
       >
         <ion-thumbnail slot="start">
           <img src="assets\images\no-image-clinic.png" />
         </ion-thumbnail>
         <ion-label>
-          <h2>{{clinic.name}}</h2>
-          <h2>{{clinic.name_alt}}</h2>
+          <h2>{{branch.name}}</h2>
+          <h2>{{branch.name_alt}}</h2>
+          <p>Open: {{branch.schedule_starting}}</p>
+          <p>Close: {{branch.schedule_ending}}</p>
         </ion-label>
       </ion-item>
     </ion-list>
