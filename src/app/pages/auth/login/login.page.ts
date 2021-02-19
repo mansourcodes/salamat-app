@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Platform } from '@ionic/angular';
 
 import { Plugins } from '@capacitor/core';
-import { SettingsService } from 'src/app/services/utilities/settings.service';
+import { SettingsService } from 'src/app/services/settings/settings.service';
 const { SplashScreen } = Plugins;
 
 @Component({
@@ -12,7 +12,6 @@ const { SplashScreen } = Plugins;
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
-  settigns: any;
 
   constructor(
     private platform: Platform,
@@ -22,10 +21,7 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log('login on init');
-    this.settingsService.settings.subscribe((settigns) => {
-      this.settigns = { ...settigns };
-    });
+
   }
 
   ionViewDidEnter() {
@@ -37,6 +33,5 @@ export class LoginPage implements OnInit {
   }
 
   updateSettings(event) {
-    this.settingsService.setSettings(this.settigns);
   }
 }

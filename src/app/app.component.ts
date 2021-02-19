@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController, Platform } from '@ionic/angular';
 // import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { SettingsService } from './services/utilities/settings.service';
 
 import { Plugins } from '@capacitor/core';
 import { AppState } from './store/app.state';
@@ -9,6 +8,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { setErrorMessage } from './store/shared/shared.actions';
 import { getErrorMessage, getLoading } from './store/shared/shared.selectors';
+import { SettingsService } from './services/settings/settings.service';
 const { SplashScreen } = Plugins;
 
 @Component({
@@ -61,7 +61,7 @@ export class AppComponent implements OnInit {
       }
     });
 
-    this.settingsService.init();
+    // this.settingsService.init();
 
   }
 

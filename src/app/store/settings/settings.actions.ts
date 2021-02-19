@@ -13,48 +13,33 @@ import { SettingInterface } from 'src/app/services/settings/setting';
 //   props<{ error: any }>()
 // );
 
-export const createSetting = createAction(
-  '[Setting] create a Setting',
+// export const createSetting = createAction(
+//   '[Setting] create a Setting',
+//   props<{ data: SettingInterface }>()
+// );
+
+// export const createSettingSuccess = createAction(
+//   '[Setting] create a Setting Success',
+//   props<{ data: any }>()
+// );
+
+// export const createSettingFailure = createAction(
+//   '[Setting] create a Setting Failure',
+//   props<{ error: any }>()
+// );
+
+export const updateSettings = createAction(
+  '[Setting] update Settings',
   props<{ data: SettingInterface }>()
 );
 
-export const createSettingSuccess = createAction(
-  '[Setting] create a Setting Success',
-  props<{ data: any }>()
-);
+// export const updateSettingsSuccess = createAction(
+//   '[Setting] update a Setting Success',
+//   props<{ data: any }>()
+// );
 
-export const createSettingFailure = createAction(
-  '[Setting] create a Setting Failure',
-  props<{ error: any }>()
-);
+// export const updateSettingsFailure = createAction(
+//   '[Setting] update a Setting Failure',
+//   props<{ error: any }>()
+// );
 
-export const updateSetting = createAction(
-  '[Setting] update a Setting',
-  props<{ data: SettingInterface }>()
-);
-
-export const updateSettingSuccess = createAction(
-  '[Setting] update a Setting Success',
-  props<{ data: any }>()
-);
-
-export const updateSettingFailure = createAction(
-  '[Setting] update a Setting Failure',
-  props<{ error: any }>()
-);
-
-
-export const destroySetting = createAction(
-  '[Setting] destroy a Setting',
-  props<{ id: string }>()
-);
-
-export const destroySettingSuccess = createAction(
-  '[Setting] destroy a Setting Success',
-  props<{ id: any }>()
-);
-
-export const destroySettingFailure = createAction(
-  '[Setting] destroy a Setting Failure',
-  props<{ error: any }>()
-);

@@ -18,8 +18,11 @@ import {
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicStorageModule } from '@ionic/storage';
 import { StoreModule } from '@ngrx/store';
-import { appReducers } from './store/app.state';
+import { AppEffects, appReducers } from './store/app.state';
 import { LoadingSpinnerComponent } from './components/loading-spinner/loading-spinner.component';
+import { environment } from 'src/environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
 
 export function createTranslateHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -35,7 +38,11 @@ export function createTranslateHttpLoader(http: HttpClient) {
     BrowserAnimationsModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
+
+    EffectsModule.forRoot(AppEffects),
     StoreModule.forRoot(appReducers),
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
+
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

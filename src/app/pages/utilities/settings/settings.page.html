@@ -7,91 +7,85 @@
 </ion-header>
 
 <ion-content>
-  <div class="pos-relative">
-    <ion-img
-      class="title-leafs"
-      src="assets\images\leaf_3.png"
-    ></ion-img>
-    <div class="ion-padding leaftitle">
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <b class="title-text"> {{ 'Settings' | translate }}</b>
-            <ion-img
-              class="title-icons"
-              src="assets\images\title_icons.svg"
-            ></ion-img>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+  <form [formGroup]="form">
+    <div class="pos-relative">
+      <ion-img class="title-leafs" src="assets\images\leaf_3.png"></ion-img>
+      <div class="ion-padding leaftitle">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <b class="title-text"> {{ 'Settings' | translate }}</b>
+              <ion-img
+                class="title-icons"
+                src="assets\images\title_icons.svg"
+              ></ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
     </div>
-  </div>
 
-  <!-- form -->
-  <div class="ion-padding-horizontal">
-    <h4>System Settings:</h4>
-  </div>
-  <ion-list *ngIf="!isLoading" class="ion-padding-horizontal">
-    <ion-item lines="none">
-      <ion-label>Language</ion-label>
-      <ion-select
-        [(ngModel)]="settigns.language"
-        (ionChange)="updateSettings($event)"
-        okText="Done"
-        cancelText="Cancel"
-      >
-        <ion-select-option
-          *ngFor="let lang of settingsService.languageList"
-          [value]="lang.value"
-          >{{lang.text}}</ion-select-option
+    <!-- form -->
+    <div class="ion-padding-horizontal">
+      <h4>System Settings:</h4>
+    </div>
+    <ion-list *ngIf="settigns" class="ion-padding-horizontal">
+      <ion-item lines="none">
+        <ion-label>Language</ion-label>
+        <ion-select
+          formControlName="languageKey"
+          okText="Done"
+          cancelText="Cancel"
         >
-      </ion-select>
-    </ion-item>
-  </ion-list>
-  <div class="ion-padding-horizontal">
-    <h4>App Information:</h4>
-  </div>
-  <ion-list class="ion-padding-horizontal">
-    <ion-item lines="full">
-      <ion-icon name="logo-instagram" slot="start"></ion-icon>
-      <ion-label>Follow us on instagram</ion-label>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-icon name="logo-youtube" slot="start"></ion-icon>
-      <ion-label>Follow us on youtube</ion-label>
-    </ion-item>
-    <ion-item lines="full">
-      <ion-icon name="logo-twitter" slot="start"></ion-icon>
-      <ion-label>Follow us on twitter</ion-label>
-    </ion-item>
-    <ion-item lines="none" routerLink="/help">
-      <ion-icon name="help-outline" slot="start"></ion-icon>
-      <ion-label> Help </ion-label>
-    </ion-item>
-  </ion-list>
+          <ion-select-option
+            *ngFor="let lang of settigns.languageList"
+            [value]="lang.key"
+            >{{lang.text}}</ion-select-option
+          >
+        </ion-select>
+      </ion-item>
+    </ion-list>
+    <div class="ion-padding-horizontal">
+      <h4>App Information:</h4>
+    </div>
+    <ion-list class="ion-padding-horizontal">
+      <ion-item lines="full">
+        <ion-icon name="logo-instagram" slot="start"></ion-icon>
+        <ion-label>Follow us on instagram</ion-label>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-icon name="logo-youtube" slot="start"></ion-icon>
+        <ion-label>Follow us on youtube</ion-label>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-icon name="logo-twitter" slot="start"></ion-icon>
+        <ion-label>Follow us on twitter</ion-label>
+      </ion-item>
+      <ion-item lines="none" routerLink="/help">
+        <ion-icon name="help-outline" slot="start"></ion-icon>
+        <ion-label> Help </ion-label>
+      </ion-item>
+    </ion-list>
 
-  <div class="ion-padding-horizontal">
-    <h4>Account Details:</h4>
-  </div>
-  <ion-list class="ion-padding-horizontal">
-    <ion-item lines="none">
-      <ion-label>
-        Change Phone Number<br />
-        <ion-note>+973 36371726</ion-note>
-      </ion-label>
+    <div class="ion-padding-horizontal">
+      <h4>Account Details:</h4>
+    </div>
+    <ion-list class="ion-padding-horizontal">
+      <ion-item lines="none">
+        <ion-label>
+          Change Phone Number<br />
+          <ion-note>+973 36371726</ion-note>
+        </ion-label>
 
-      <ion-button
-        size="default"
-        color="light"
-        (click)="logoutConfirm()"
-      >
-        <ion-icon name="log-out-outline" slot="start"></ion-icon>
-        Logout
-      </ion-button>
-    </ion-item>
-  </ion-list>
+        <ion-button size="default" color="light" (click)="logoutConfirm()">
+          <ion-icon name="log-out-outline" slot="start"></ion-icon>
+          Logout
+        </ion-button>
+      </ion-item>
+    </ion-list>
 
-  <p class="ion-text-center">salamat 0.0.1</p>
+    <p class="ion-text-center">salamat 0.0.1</p>
 
-  <br />
+    <br />
+  </form>
 </ion-content>

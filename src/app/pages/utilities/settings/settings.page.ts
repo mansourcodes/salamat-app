@@ -1,6 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { AlertController } from '@ionic/angular';
-import { SettingsService } from 'src/app/services/utilities/settings.service';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { debounceTime, filter, take } from 'rxjs/operators';
+import { SettingInterface } from 'src/app/services/settings/setting';
+import { SettingsService } from 'src/app/services/settings/settings.service';
+import { AppState } from 'src/app/store/app.state';
+import { updateSettings } from 'src/app/store/settings/settings.actions';
+import { getSettings } from 'src/app/store/settings/settings.selectors';
 
 @Component({
   selector: 'app-settings',
@@ -8,24 +16,41 @@ import { SettingsService } from 'src/app/services/utilities/settings.service';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
-  isLoading = true;
-  settigns: any;
+  settigns: SettingInterface;
+  form: FormGroup;
+
 
   constructor(
     public alertController: AlertController,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private store: Store<AppState>
   ) { }
 
   ngOnInit() {
-    this.isLoading = true;
-    this.settingsService.settings.subscribe((settigns) => {
-      this.isLoading = false;
+    this.initForm();
+    this.store.select(getSettings).subscribe((settigns) => {
       this.settigns = { ...settigns };
+      this.initForm();
     });
   }
 
-  updateSettings(event) {
-    this.settingsService.setSettings(this.settigns);
+  initForm() {
+    this.form = new FormGroup({
+      languageKey: new FormControl(this.settigns?.language.key, {}),
+    });
+
+    this.form.valueChanges
+      .pipe(
+        filter(() => this.form.valid),
+        take(1),
+      )
+      .subscribe((next) => {
+
+        let newlanguage = this.settigns.languageList.find(language => language.key == next.languageKey);
+        this.settigns.language = newlanguage;
+
+        this.store.dispatch(updateSettings(({ data: this.settigns })));
+      });
   }
 
   async logoutConfirm() {
