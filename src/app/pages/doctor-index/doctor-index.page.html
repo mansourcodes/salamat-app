@@ -8,10 +8,7 @@
 
 <ion-content>
   <ion-content>
-    <ion-img
-      class="title-leafs"
-      src="assets\images\leaf_1.png"
-    ></ion-img>
+    <ion-img class="title-leafs" src="assets\images\leaf_1.png"></ion-img>
 
     <div class="ion-padding leaftitle">
       <ion-grid class="ion-padding-horizontal">
@@ -36,11 +33,7 @@
     <br />
     <br />
     <ion-item lines="none">
-      <mat-form-field
-        floatLabel="always"
-        appearance="outline"
-        class="w-100"
-      >
+      <mat-form-field floatLabel="always" appearance="outline" class="w-100">
         <mat-label>Search</mat-label>
         <input matInput type="text" [(ngModel)]="value" />
         <mat-hint>Search by name, clinic or specialist.</mat-hint>
@@ -57,15 +50,15 @@
       <ion-item
         detail
         button
-        *ngFor="let in of counter(5) ;let i = index"
+        *ngFor="let doctor of doctors$ | async"
         routerLink="/appo-form"
       >
         <ion-thumbnail slot="start">
           <img src="assets\images\no-image-doctor.png" />
         </ion-thumbnail>
         <ion-label>
-          <h2>Dr. Ali Sahwan</h2>
-          <p>Specialist in Eyes and Smiles</p>
+          <h2>{{doctor.name}}</h2>
+          <p>Specialist in {{doctor.name_alt}} and Smiles</p>
         </ion-label>
       </ion-item>
     </ion-list>

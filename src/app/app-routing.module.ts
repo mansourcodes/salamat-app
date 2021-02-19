@@ -8,7 +8,7 @@ import {
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -66,17 +66,18 @@ const routes: Routes = [
       import('./pages/auth/otp/otp.module').then(
         (m) => m.OtpPageModule
       ),
-  },  {
+  },
+  {
     path: 'specialist-index',
-    loadChildren: () => import('./pages/specialist-index/specialist-index.module').then( m => m.SpecialistIndexPageModule)
+    loadChildren: () => import('./pages/specialist-index/specialist-index.module').then(m => m.SpecialistIndexPageModule)
   },
   {
     path: 'settings',
-    loadChildren: () => import('./pages/utilities/settings/settings.module').then( m => m.SettingsPageModule)
+    loadChildren: () => import('./pages/utilities/settings/settings.module').then(m => m.SettingsPageModule)
   },
   {
     path: 'help',
-    loadChildren: () => import('./pages/utilities/help/help.module').then( m => m.HelpPageModule)
+    loadChildren: () => import('./pages/utilities/help/help.module').then(m => m.HelpPageModule)
   },
 
 ];
@@ -89,4 +90,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

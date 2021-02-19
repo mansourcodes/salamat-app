@@ -17,6 +17,8 @@ import {
 } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { IonicStorageModule } from '@ionic/storage';
+import { StoreModule } from '@ngrx/store';
+import { appReducers } from './store/app.state';
 
 export function createTranslateHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -32,6 +34,7 @@ export function createTranslateHttpLoader(http: HttpClient) {
     BrowserAnimationsModule,
     HttpClientModule,
     IonicStorageModule.forRoot(),
+    StoreModule.forRoot(appReducers),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
