@@ -46,25 +46,30 @@
   </ion-item>
 
   <ion-list class="ion-padding-horizontal">
-    <ion-item
-      detail
-      button
-      *ngFor="let doctor of doctorsFiltered$  | async  "
-      (click)=" onChoose(doctor)"
+    <ion-virtual-scroll
+      [items]="doctorsFiltered$  | async"
+      approxItemHeight="71px"
     >
-      <ion-thumbnail slot="start">
-        <img
-          *ngIf="doctor.photo"
-          src="http://localhost:22080/v1/doctor/photo/{{doctor.photo}}"
-        />
-        <img *ngIf="!doctor.photo" src="assets\images\no-image-doctor.png" />
-      </ion-thumbnail>
-      <ion-label>
-        <h2>{{doctor.name}}</h2>
-        <h2>{{doctor.name_alt}}</h2>
-        <p>Specialist in {{doctor.specialization.title}}</p>
-        <p>{{doctor.specialization.title_ar}}</p>
-      </ion-label>
-    </ion-item>
+      <ion-item
+        detail
+        button
+        *virtualItem="let doctor  "
+        (click)=" onChoose(doctor)"
+      >
+        <ion-thumbnail slot="start">
+          <img
+            *ngIf="doctor.photo"
+            src="http://localhost:22080/v1/doctor/photo/{{doctor.photo}}"
+          />
+          <img *ngIf="!doctor.photo" src="assets\images\no-image-doctor.png" />
+        </ion-thumbnail>
+        <ion-label>
+          <h2>{{doctor.name}}</h2>
+          <h2>{{doctor.name_alt}}</h2>
+          <p>Specialist in {{doctor.specialization.title}}</p>
+          <p>{{doctor.specialization.title_ar}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-virtual-scroll>
   </ion-list>
 </ion-content>
