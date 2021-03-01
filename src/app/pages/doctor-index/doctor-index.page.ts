@@ -5,7 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { DoctorInterface } from 'src/app/services/doctors/doctor';
 import { AppState } from 'src/app/store/app.state';
-import { getAppoformBranchId, getAppoformClinicId, setAppoformDoctorId } from 'src/app/store/appoform/appoform.actions';
+import { getAppoformBranchId, getAppoformClinicId, setAppoformBranchId, setAppoformClinicId, setAppoformDoctorId } from 'src/app/store/appoform/appoform.actions';
 import { getBranchId, getClinicId } from 'src/app/store/appoform/appoform.selectors';
 import { loadDoctors } from 'src/app/store/doctors/doctors.actions';
 import { getDoctors } from 'src/app/store/doctors/doctors.selectors';
@@ -28,6 +28,11 @@ export class DoctorIndexPage implements OnInit {
   getBranchIdSubscription: Subscription;
 
   constructor(private store: Store<AppState>, private route: ActivatedRoute, private router: Router) { }
+
+  ionViewWillEnter() {
+    this.store.dispatch(setAppoformDoctorId({ doctor_id: 0 }));
+  }
+
 
   ngOnInit() {
     this.activeFilter = this.route.snapshot.paramMap.get("filter");
@@ -68,15 +73,17 @@ export class DoctorIndexPage implements OnInit {
 
     this.getClinicIdSubscription = this.store.select(getClinicId).subscribe(current_clinic_id => {
       if (current_clinic_id) {
-        console.info('current_clinic_id:' + current_clinic_id);
         this.getBranchIdSubscription = this.store.select(getBranchId).subscribe(current_branch_id => {
           if (current_branch_id) {
-            console.info('current_branch_id:' + current_branch_id);
             this.router.navigate(['/appo-form']);
-          } else {
-            this.router.navigate(['/branch-index/doctor/' + doctor.id]);
           }
         });
+
+      } else if (doctor.branches.length == 1) {
+        this.store.dispatch(setAppoformBranchId({ branch_id: doctor.branches[0].id }));
+        this.store.dispatch(setAppoformClinicId({ clinic_id: doctor.branches[0].clinic_id }));
+        this.router.navigate(['/appo-form']);
+
       } else {
         this.router.navigate(['/branch-index/doctor/' + doctor.id]);
       }

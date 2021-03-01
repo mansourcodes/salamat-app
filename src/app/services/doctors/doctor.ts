@@ -10,7 +10,7 @@ export interface DoctorInterface {
     specialization: SpecialityInterface;
 
     branches_ids: number[];
-    branches: { id: number }[];
+    branches: { id: number, clinic_id: number }[];
 }
 
 

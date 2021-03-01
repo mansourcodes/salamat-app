@@ -19,6 +19,11 @@ export class ClinicIndexPage implements OnInit {
 
   constructor(private store: Store<AppState>, private router: Router) { }
 
+  ionViewWillEnter() {
+    this.store.dispatch(setAppoformClinicId({ clinic_id: 0 }));
+    this.store.dispatch(setAppoformBranchId({ branch_id: 0 }));
+  }
+
   ngOnInit() {
     this.clinics$ = this.store.select(getClinics);
     this.store.dispatch(loadClinics());

@@ -17,6 +17,9 @@ export class ClinicsService {
         for (let key in data) {
           clinics.push({ ...data[key] });
         }
+
+        clinics.sort(() => Math.random() - 0.5);
+
         return clinics;
       })
     );

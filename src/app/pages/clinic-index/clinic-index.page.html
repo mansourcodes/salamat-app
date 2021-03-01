@@ -59,6 +59,9 @@
         <h2>{{clinic.name}}</h2>
         <h2>{{clinic.name_alt}}</h2>
       </ion-label>
+      <ion-badge *ngIf="clinic.branches.length > 1" color="primary">
+        {{clinic.branches.length}}
+      </ion-badge>
     </ion-item>
   </ion-list>
 </ion-content>

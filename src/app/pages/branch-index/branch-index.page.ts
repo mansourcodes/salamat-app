@@ -3,7 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Subscription } from 'rxjs/internal/Subscription';
-import { filter, map } from 'rxjs/operators';
+import { filter, map, tap } from 'rxjs/operators';
 import { BranchInterface } from 'src/app/services/branches/branch';
 import { AppState } from 'src/app/store/app.state';
 import { setAppoformBranchId, setAppoformClinicId } from 'src/app/store/appoform/appoform.actions';
@@ -29,6 +29,11 @@ export class BranchIndexPage implements OnInit {
 
   constructor(private store: Store<AppState>, private route: ActivatedRoute, private router: Router) { }
 
+  ionViewWillEnter() {
+    this.store.dispatch(setAppoformBranchId({ branch_id: 0 }));
+  }
+
+
   ngOnInit() {
 
     this.activeFilter = this.route.snapshot.paramMap.get("filter");
@@ -53,7 +58,12 @@ export class BranchIndexPage implements OnInit {
         }
         return branches;
       }),
-      filter(branches => branches && branches.length > 0)
+      filter(branches => branches && branches.length > 0),
+      // tap(branches => {
+      //   if (branches.length == 1) {
+      //     this.onChoose(branches[0]);
+      //   }
+      // })
     );
 
     this.store.dispatch(loadBranches());
