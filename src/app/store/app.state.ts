@@ -1,4 +1,7 @@
 
+import { AppoformEffects } from './appoform/appoform.effects';
+import { appoformReducer } from './appoform/appoform.reducer';
+import { appoformFeatureKey, AppoformState } from './appoform/appoform.state';
 import { AppoEffects } from './appos/appos.effects';
 import { apposReducer } from './appos/appos.reducer';
 import { apposFeatureKey, ApposState } from './appos/appos.state';
@@ -29,6 +32,7 @@ export interface AppState {
   [specialitiesFeatureKey]: SpecialitiesState;
   [branchesFeatureKey]: BranchesState;
   [apposFeatureKey]: ApposState;
+  [appoformFeatureKey]: AppoformState;
 
 
 }
@@ -41,6 +45,7 @@ export const appReducers = {
   [specialitiesFeatureKey]: specialitiesReducer,
   [branchesFeatureKey]: branchesReducer,
   [apposFeatureKey]: apposReducer,
+  [appoformFeatureKey]: appoformReducer,
 
 };
 
@@ -52,4 +57,5 @@ export const AppEffects = [
   SpecialityEffects,
   BranchEffects,
   AppoEffects,
+
 ]

@@ -7,7 +7,7 @@ export interface AppoInterface {
     branch_id: number;
     date: string;
     time: string;
-    notes: null;
+    notes: string;
 
 
     status?: number;
