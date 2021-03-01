@@ -53,7 +53,11 @@
       routerLink="/appo-form"
     >
       <ion-thumbnail slot="start">
-        <img src="assets\images\no-image-doctor.png" />
+        <img
+          *ngIf="doctor.photo"
+          src="http://localhost:22080/v1/doctor/photo/{{doctor.photo}}"
+        />
+        <img *ngIf="!doctor.photo" src="assets\images\no-image-doctor.png" />
       </ion-thumbnail>
       <ion-label>
         <h2>{{doctor.name}}</h2>

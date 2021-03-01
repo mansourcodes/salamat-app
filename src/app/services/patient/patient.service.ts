@@ -15,7 +15,7 @@ export class PatientsService {
       map((data) => {
         const patients: PatientInterface[] = [];
         for (let key in data) {
-          patients.push({ ...data[key], id: +key });
+          patients.push({ ...data[key] });
         }
         return patients;
       })

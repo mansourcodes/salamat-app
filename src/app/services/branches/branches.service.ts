@@ -15,7 +15,7 @@ export class BranchesService {
       map((data) => {
         const branches: BranchInterface[] = [];
         for (let key in data) {
-          branches.push({ ...data[key], id: +key });
+          branches.push({ ...data[key] });
         }
         return branches;
       })

@@ -15,7 +15,7 @@ export class DoctorsService {
       map((data) => {
         const doctors: DoctorInterface[] = [];
         for (let key in data) {
-          doctors.push({ ...data[key], id: +key });
+          doctors.push({ ...data[key] });
         }
         return doctors;
       })

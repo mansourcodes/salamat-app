@@ -15,7 +15,7 @@ export class ClinicsService {
       map((data) => {
         const clinics: ClinicInterface[] = [];
         for (let key in data) {
-          clinics.push({ ...data[key], id: +key });
+          clinics.push({ ...data[key] });
         }
         return clinics;
       })
