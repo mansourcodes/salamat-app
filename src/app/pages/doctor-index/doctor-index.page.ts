@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { DoctorInterface } from 'src/app/services/doctors/doctor';
 import { AppState } from 'src/app/store/app.state';
@@ -24,11 +24,12 @@ export class DoctorIndexPage implements OnInit {
   specialityFilter: boolean | number = false;
   branchFilter: boolean | number = false;
 
+  getClinicIdSubscription: Subscription;
+  getBranchIdSubscription: Subscription;
+
   constructor(private store: Store<AppState>, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-
-
     this.activeFilter = this.route.snapshot.paramMap.get("filter");
     if (this.activeFilter == 'speciality') {
       this.specialityFilter = +this.route.snapshot.paramMap.get("id");
@@ -65,10 +66,10 @@ export class DoctorIndexPage implements OnInit {
 
     this.store.dispatch(setAppoformDoctorId({ doctor_id: doctor.id }));
 
-    this.store.select(getClinicId).subscribe(current_clinic_id => {
+    this.getClinicIdSubscription = this.store.select(getClinicId).subscribe(current_clinic_id => {
       if (current_clinic_id) {
         console.info('current_clinic_id:' + current_clinic_id);
-        this.store.select(getBranchId).subscribe(current_branch_id => {
+        this.getBranchIdSubscription = this.store.select(getBranchId).subscribe(current_branch_id => {
           if (current_branch_id) {
             console.info('current_branch_id:' + current_branch_id);
             this.router.navigate(['/appo-form']);
@@ -80,5 +81,15 @@ export class DoctorIndexPage implements OnInit {
         this.router.navigate(['/branch-index/doctor/' + doctor.id]);
       }
     });
+  }
+
+
+  ionViewWillLeave() {
+    if (this.getClinicIdSubscription) {
+      this.getClinicIdSubscription.unsubscribe();
+    }
+    if (this.getBranchIdSubscription) {
+      this.getBranchIdSubscription.unsubscribe();
+    }
   }
 }

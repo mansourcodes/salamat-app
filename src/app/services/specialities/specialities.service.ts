@@ -11,12 +11,17 @@ export class SpecialitiesService {
   constructor(private http: HttpClient) { }
 
   getSpecialities() {
-    return this.http.get<SpecialityInterface[]>('http://localhost:22080/v1/specialities').pipe(
+    return this.http.get<SpecialityInterface[]>('http://localhost:22080/v1/specialities?expand=doctors').pipe(
       map((data) => {
         const specialities: SpecialityInterface[] = [];
         for (let key in data) {
+          if (data[key].doctors.length <= 0) {
+            continue;
+          }
           specialities.push({ ...data[key] });
         }
+
+        specialities.sort((a, b) => (a.doctors.length < b.doctors.length) ? 1 : -1)
         return specialities;
       })
     );

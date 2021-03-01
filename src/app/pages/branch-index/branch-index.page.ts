@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { Subscription } from 'rxjs/internal/Subscription';
 import { filter, map } from 'rxjs/operators';
 import { BranchInterface } from 'src/app/services/branches/branch';
 import { AppState } from 'src/app/store/app.state';
@@ -23,6 +24,8 @@ export class BranchIndexPage implements OnInit {
   activeFilter: string;
   clinicIdFilter: boolean | number = false;
   doctorIdFilter: boolean | number = false;
+
+  getDoctorIdSubscription: Subscription;
 
   constructor(private store: Store<AppState>, private route: ActivatedRoute, private router: Router) { }
 
@@ -62,7 +65,7 @@ export class BranchIndexPage implements OnInit {
     this.store.dispatch(setAppoformBranchId({ branch_id: branch.id }));
     this.store.dispatch(setAppoformClinicId({ clinic_id: branch.clinic_id }));
 
-    this.store.select(getDoctorId).subscribe(current_doctor_id => {
+    this.getDoctorIdSubscription = this.store.select(getDoctorId).subscribe(current_doctor_id => {
       if (current_doctor_id) {
         console.info('current_doctor_id:' + current_doctor_id);
         this.router.navigate(['/appo-form']);
@@ -70,5 +73,12 @@ export class BranchIndexPage implements OnInit {
         this.router.navigate(['/doctor-index/branch/' + branch.id]);
       }
     });
+  }
+
+
+  ionViewWillLeave() {
+    if (this.getDoctorIdSubscription) {
+      this.getDoctorIdSubscription.unsubscribe();
+    }
   }
 }

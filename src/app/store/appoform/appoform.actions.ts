@@ -1,5 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 
+export const clearAppoform = createAction(
+  '[Appoform] set Appo Form Cleared'
+);
 
 //-------------
 

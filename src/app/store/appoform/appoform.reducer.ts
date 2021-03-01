@@ -1,10 +1,18 @@
 import { Action, createReducer, on } from '@ngrx/store';
-import { setAppoformBranchId, setAppoformClinicId, setAppoformDate, setAppoformDoctorId, setAppoformNotes, setAppoformTime } from './appoform.actions';
+import { clearAppoform, setAppoformBranchId, setAppoformClinicId, setAppoformDate, setAppoformDoctorId, setAppoformNotes, setAppoformTime } from './appoform.actions';
 
 import { initialState } from './appoform.state';
 
 const _appoformReducer = createReducer(
   initialState,
+  on(clearAppoform, (state, action) => {
+    console.log('clearAppoform');
+
+    return {
+      ...state,
+      ...initialState
+    };
+  }),
   on(setAppoformClinicId, (state, action) => {
     return {
       ...state,

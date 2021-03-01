@@ -3,6 +3,8 @@ export interface SpecialityInterface {
     title: string;
     title_ar: string;
     icon?: string;
+
+    doctors: [];
 }
 
 
