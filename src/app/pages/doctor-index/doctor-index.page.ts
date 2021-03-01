@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { DoctorInterface } from 'src/app/services/doctors/doctor';
 import { AppState } from 'src/app/store/app.state';
+import { getAppoformBranchId, getAppoformClinicId, setAppoformDoctorId } from 'src/app/store/appoform/appoform.actions';
+import { getBranchId, getClinicId } from 'src/app/store/appoform/appoform.selectors';
 import { loadDoctors } from 'src/app/store/doctors/doctors.actions';
 import { getDoctors } from 'src/app/store/doctors/doctors.selectors';
 
@@ -22,7 +24,7 @@ export class DoctorIndexPage implements OnInit {
   specialityFilter: boolean | number = false;
   branchFilter: boolean | number = false;
 
-  constructor(private store: Store<AppState>, private route: ActivatedRoute) { }
+  constructor(private store: Store<AppState>, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
 
@@ -54,5 +56,29 @@ export class DoctorIndexPage implements OnInit {
 
 
     this.store.dispatch(loadDoctors());
+  }
+
+
+
+
+  onChoose(doctor: DoctorInterface) {
+
+    this.store.dispatch(setAppoformDoctorId({ doctor_id: doctor.id }));
+
+    this.store.select(getClinicId).subscribe(current_clinic_id => {
+      if (current_clinic_id) {
+        console.info('current_clinic_id:' + current_clinic_id);
+        this.store.select(getBranchId).subscribe(current_branch_id => {
+          if (current_branch_id) {
+            console.info('current_branch_id:' + current_branch_id);
+            this.router.navigate(['/appo-form']);
+          } else {
+            this.router.navigate(['/branch-index/doctor/' + doctor.id]);
+          }
+        });
+      } else {
+        this.router.navigate(['/branch-index/doctor/' + doctor.id]);
+      }
+    });
   }
 }

@@ -12,17 +12,24 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
+    path: 'login',
+    loadChildren: () =>
+      import('./pages/auth/login/login.module').then(
+        (m) => m.LoginPageModule
+      ),
+  },
+  {
+    path: 'otp',
+    loadChildren: () =>
+      import('./pages/auth/otp/otp.module').then(
+        (m) => m.OtpPageModule
+      ),
+  },
+  {
     path: 'home',
     loadChildren: () =>
       import('./pages/home/home.module').then(
         (m) => m.HomePageModule
-      ),
-  },
-  {
-    path: 'appo-index',
-    loadChildren: () =>
-      import('./pages/appo-index/appo-index.module').then(
-        (m) => m.AppoIndexPageModule
       ),
   },
   {
@@ -37,6 +44,13 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/appo-single/appo-single.module').then(
         (m) => m.AppoSinglePageModule
+      ),
+  },
+  {
+    path: 'appo-index',
+    loadChildren: () =>
+      import('./pages/appo-index/appo-index.module').then(
+        (m) => m.AppoIndexPageModule
       ),
   },
   {
@@ -61,18 +75,8 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'login',
-    loadChildren: () =>
-      import('./pages/auth/login/login.module').then(
-        (m) => m.LoginPageModule
-      ),
-  },
-  {
-    path: 'otp',
-    loadChildren: () =>
-      import('./pages/auth/otp/otp.module').then(
-        (m) => m.OtpPageModule
-      ),
+    path: 'branch-index/:filter/:id',
+    loadChildren: () => import('./pages/branch-index/branch-index.module').then(m => m.BranchIndexPageModule)
   },
   {
     path: 'specialist-index',
@@ -85,10 +89,6 @@ const routes: Routes = [
   {
     path: 'help',
     loadChildren: () => import('./pages/utilities/help/help.module').then(m => m.HelpPageModule)
-  },
-  {
-    path: 'branch-index/:filter/:id',
-    loadChildren: () => import('./pages/branch-index/branch-index.module').then(m => m.BranchIndexPageModule)
   },
 
 

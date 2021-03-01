@@ -8,7 +8,9 @@ export interface DoctorInterface {
     photo: string;
     speciality: number;
     specialization: SpecialityInterface;
+
     branches_ids: number[];
+    branches: { id: number }[];
 }
 
 

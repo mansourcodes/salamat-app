@@ -9,7 +9,12 @@ export interface BranchInterface {
     location: string;
     schedule_starting: Date;
     schedule_ending: Date;
+
     clinic: ClinicInterface;
+
+
+    doctors_ids: number[];
+    doctors: { id: number }[];
 }
 
 

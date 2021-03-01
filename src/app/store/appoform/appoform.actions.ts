@@ -37,32 +37,26 @@ export const setAppoformNotes = createAction(
 //-------------
 
 export const getAppoformClinicId = createAction(
-  '[Appoform] get Appo Form Clinic id',
-  props<{ clinic_id: number }>()
+  '[Appoform] get Appo Form Clinic id'
 );
 
 export const getAppoformBranchId = createAction(
-  '[Appoform] get Appo Form Branch id',
-  props<{ branch_id: number }>()
+  '[Appoform] get Appo Form Branch id'
 );
 
 export const getAppoformDoctorId = createAction(
-  '[Appoform] get Appo Form Doctor id',
-  props<{ doctor_id: number }>()
+  '[Appoform] get Appo Form Doctor id'
 );
 
 export const getAppoformDate = createAction(
-  '[Appoform] get Appo Form Date',
-  props<{ date: string }>()
+  '[Appoform] get Appo Form Date'
 );
 
 export const getAppoformTime = createAction(
-  '[Appoform] get Appo Form Date',
-  props<{ time: string }>()
+  '[Appoform] get Appo Form Date'
 );
 
 export const getAppoformNotes = createAction(
-  '[Appoform] get Appo Form Date',
-  props<{ notes: string }>()
+  '[Appoform] get Appo Form Date'
 );
 

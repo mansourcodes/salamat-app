@@ -36,7 +36,7 @@
       detail
       button
       *ngFor="let branch of branchesFiltered$ | async"
-      routerLink="/appo-form"
+      (click)="onChoose(branch)"
     >
       <ion-thumbnail slot="start">
         <img src="assets\images\no-image-clinic.png" />

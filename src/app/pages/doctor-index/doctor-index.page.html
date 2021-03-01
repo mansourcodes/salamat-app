@@ -50,7 +50,7 @@
       detail
       button
       *ngFor="let doctor of doctorsFiltered$  | async  "
-      routerLink="/appo-form"
+      (click)=" onChoose(doctor)"
     >
       <ion-thumbnail slot="start">
         <img

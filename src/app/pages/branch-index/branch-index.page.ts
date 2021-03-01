@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { BranchInterface } from 'src/app/services/branches/branch';
 import { AppState } from 'src/app/store/app.state';
+import { setAppoformBranchId, setAppoformClinicId } from 'src/app/store/appoform/appoform.actions';
+import { getDoctorId } from 'src/app/store/appoform/appoform.selectors';
 import { loadBranches } from 'src/app/store/branches/branches.actions';
 import { getBranches } from 'src/app/store/branches/branches.selectors';
 
@@ -20,14 +22,18 @@ export class BranchIndexPage implements OnInit {
 
   activeFilter: string;
   clinicIdFilter: boolean | number = false;
+  doctorIdFilter: boolean | number = false;
 
-  constructor(private store: Store<AppState>, private route: ActivatedRoute) { }
+  constructor(private store: Store<AppState>, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
 
     this.activeFilter = this.route.snapshot.paramMap.get("filter");
     if (this.activeFilter == 'clinic') {
       this.clinicIdFilter = +this.route.snapshot.paramMap.get("id");
+    }
+    if (this.activeFilter == 'doctor') {
+      this.doctorIdFilter = +this.route.snapshot.paramMap.get("id");
     }
 
 
@@ -37,11 +43,32 @@ export class BranchIndexPage implements OnInit {
         if (this.clinicIdFilter !== false) {
           return branches.filter(singleBranch => singleBranch.clinic_id == this.clinicIdFilter)
         }
+        if (this.doctorIdFilter !== false) {
+          return branches.filter(singleBranch => {
+            return singleBranch.doctors_ids.find(id => id == this.doctorIdFilter);
+          })
+        }
         return branches;
       }),
       filter(branches => branches && branches.length > 0)
     );
 
     this.store.dispatch(loadBranches());
+  }
+
+
+  onChoose(branch: BranchInterface) {
+
+    this.store.dispatch(setAppoformBranchId({ branch_id: branch.id }));
+    this.store.dispatch(setAppoformClinicId({ clinic_id: branch.clinic_id }));
+
+    this.store.select(getDoctorId).subscribe(current_doctor_id => {
+      if (current_doctor_id) {
+        console.info('current_doctor_id:' + current_doctor_id);
+        this.router.navigate(['/appo-form']);
+      } else {
+        this.router.navigate(['/doctor-index/branch/' + branch.id]);
+      }
+    });
   }
 }
