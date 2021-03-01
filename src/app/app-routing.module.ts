@@ -61,13 +61,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'doctor-index',
-    loadChildren: () =>
-      import('./pages/doctor-index/doctor-index.module').then(
-        (m) => m.DoctorIndexPageModule
-      ),
-  },
-  {
     path: 'login',
     loadChildren: () =>
       import('./pages/auth/login/login.module').then(

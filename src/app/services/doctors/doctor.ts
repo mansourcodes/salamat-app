@@ -1,3 +1,4 @@
+import { BranchInterface } from "../branches/branch";
 import { SpecialityInterface } from "../specialities/speciality";
 
 export interface DoctorInterface {
@@ -7,6 +8,7 @@ export interface DoctorInterface {
     photo: string;
     speciality: number;
     specialization: SpecialityInterface;
+    branches_ids: number[];
 }
 
 

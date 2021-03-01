@@ -1,5 +1,4 @@
 
-import { AppoformEffects } from './appoform/appoform.effects';
 import { appoformReducer } from './appoform/appoform.reducer';
 import { appoformFeatureKey, AppoformState } from './appoform/appoform.state';
 import { AppoEffects } from './appos/appos.effects';

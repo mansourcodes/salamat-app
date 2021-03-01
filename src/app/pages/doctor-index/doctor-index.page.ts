@@ -20,6 +20,7 @@ export class DoctorIndexPage implements OnInit {
 
   activeFilter: string;
   specialityFilter: boolean | number = false;
+  branchFilter: boolean | number = false;
 
   constructor(private store: Store<AppState>, private route: ActivatedRoute) { }
 
@@ -30,6 +31,9 @@ export class DoctorIndexPage implements OnInit {
     if (this.activeFilter == 'speciality') {
       this.specialityFilter = +this.route.snapshot.paramMap.get("id");
     }
+    if (this.activeFilter == 'branch') {
+      this.branchFilter = +this.route.snapshot.paramMap.get("id");
+    }
 
 
     this.doctors$ = this.store.select(getDoctors);
@@ -37,6 +41,11 @@ export class DoctorIndexPage implements OnInit {
       map(doctors => {
         if (this.specialityFilter !== false) {
           return doctors.filter(singleDoctor => singleDoctor.speciality == this.specialityFilter)
+        }
+        if (this.branchFilter !== false) {
+          return doctors.filter(singleDoctor => {
+            return singleDoctor.branches_ids.find(id => id == this.branchFilter);
+          })
         }
         return doctors;
       }),
