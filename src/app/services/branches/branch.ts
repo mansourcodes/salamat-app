@@ -1,12 +1,15 @@
+import { ClinicInterface } from "../clinics/clinic";
+
 export interface BranchInterface {
-    id: string;
-    clinic_id: string;
+    id: number;
+    clinic_id: number;
     name: string;
     name_alt: string;
     address: string;
     location: string;
     schedule_starting: string;
     schedule_ending: string;
+    clinic: ClinicInterface;
 }
 
 

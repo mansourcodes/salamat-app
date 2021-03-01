@@ -1,8 +1,9 @@
 export interface ClinicInterface {
-    id: string;
+    id: number;
     name: string;
     name_alt: string;
     logo: string;
+    branches: { id: number; }[];
 }
 
 

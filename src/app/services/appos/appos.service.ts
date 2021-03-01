@@ -15,7 +15,7 @@ export class ApposService {
       map((data) => {
         const appos: AppoInterface[] = [];
         for (let key in data) {
-          appos.push({ ...data[key], id: key });
+          appos.push({ ...data[key], id: +key });
         }
         return appos;
       })

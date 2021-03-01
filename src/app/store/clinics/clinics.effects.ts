@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { ClinicsService } from 'src/app/services/clinics/clinics.service';
+import { setErrorMessage } from '../shared/shared.actions';
 import { loadClinics, loadClinicsSuccess } from './clinics.actions';
 
 
@@ -26,6 +27,11 @@ export class ClinicEffects {
           return this.clinicsService.getClinics().pipe(
             map((clinics) => {
               return loadClinicsSuccess({ clinics });
+            }),
+            catchError((error) => {
+              return of(
+                setErrorMessage({ message: error.message })
+              );
             })
           )
         }),

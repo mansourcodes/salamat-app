@@ -54,6 +54,20 @@ const routes: Routes = [
       ),
   },
   {
+    path: 'doctor-index/:filter/:id',
+    loadChildren: () =>
+      import('./pages/doctor-index/doctor-index.module').then(
+        (m) => m.DoctorIndexPageModule
+      ),
+  },
+  {
+    path: 'doctor-index',
+    loadChildren: () =>
+      import('./pages/doctor-index/doctor-index.module').then(
+        (m) => m.DoctorIndexPageModule
+      ),
+  },
+  {
     path: 'login',
     loadChildren: () =>
       import('./pages/auth/login/login.module').then(
@@ -78,9 +92,10 @@ const routes: Routes = [
   {
     path: 'help',
     loadChildren: () => import('./pages/utilities/help/help.module').then(m => m.HelpPageModule)
-  },  {
-    path: 'branch-index',
-    loadChildren: () => import('./pages/branch-index/branch-index.module').then( m => m.BranchIndexPageModule)
+  },
+  {
+    path: 'branch-index/:filter/:id',
+    loadChildren: () => import('./pages/branch-index/branch-index.module').then(m => m.BranchIndexPageModule)
   },
 
 

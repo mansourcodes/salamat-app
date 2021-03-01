@@ -50,7 +50,7 @@
       detail
       button
       *ngFor="let speciality of specialities$ | async"
-      routerLink="/doctor-index"
+      [routerLink]="['/doctor-index/speciality/'+speciality.id ]"
     >
       <ion-label>
         <h2>{{speciality.title}}</h2>

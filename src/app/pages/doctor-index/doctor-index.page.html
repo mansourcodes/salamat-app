@@ -49,7 +49,7 @@
     <ion-item
       detail
       button
-      *ngFor="let doctor of doctors$ | async"
+      *ngFor="let doctor of doctorsFiltered$  | async  "
       routerLink="/appo-form"
     >
       <ion-thumbnail slot="start">
@@ -58,7 +58,8 @@
       <ion-label>
         <h2>{{doctor.name}}</h2>
         <h2>{{doctor.name_alt}}</h2>
-        <p>Specialist in {{doctor.speciality}}</p>
+        <p>Specialist in {{doctor.specialization.title}}</p>
+        <p>{{doctor.specialization.title_ar}}</p>
       </ion-label>
     </ion-item>
   </ion-list>

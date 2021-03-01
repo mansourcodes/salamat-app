@@ -15,7 +15,7 @@ export class SpecialitiesService {
       map((data) => {
         const specialities: SpecialityInterface[] = [];
         for (let key in data) {
-          specialities.push({ ...data[key], id: key });
+          specialities.push({ ...data[key], id: +key });
         }
         return specialities;
       })

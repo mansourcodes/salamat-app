@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { ApposService } from 'src/app/services/appos/appos.service';
+import { setErrorMessage } from '../shared/shared.actions';
 import { loadAppos, loadApposSuccess } from './appos.actions';
 
 
@@ -26,6 +27,11 @@ export class AppoEffects {
           return this.apposService.getAppos().pipe(
             map((appos) => {
               return loadApposSuccess({ appos });
+            }),
+            catchError((error) => {
+              return of(
+                setErrorMessage({ message: error.message })
+              );
             })
           )
         }),

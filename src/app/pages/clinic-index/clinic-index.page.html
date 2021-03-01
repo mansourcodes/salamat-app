@@ -50,7 +50,7 @@
       detail
       button
       *ngFor="let clinic of clinics$ | async"
-      routerLink="/branch-index"
+      [routerLink]="['/branch-index/clinic/'+clinic.id ]"
     >
       <ion-thumbnail slot="start">
         <img src="assets\images\no-image-clinic.png" />

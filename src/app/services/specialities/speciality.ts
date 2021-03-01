@@ -1,5 +1,5 @@
 export interface SpecialityInterface {
-    id: string;
+    id: number;
     title: string;
     title_ar: string;
     icon?: string;

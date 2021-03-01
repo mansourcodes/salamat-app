@@ -11,11 +11,11 @@ export class ClinicsService {
   constructor(private http: HttpClient) { }
 
   getClinics() {
-    return this.http.get<ClinicInterface[]>('http://localhost:22080/v1/clinics').pipe(
+    return this.http.get<ClinicInterface[]>('http://localhost:22080/v1/clinics?expand=branches').pipe(
       map((data) => {
         const clinics: ClinicInterface[] = [];
         for (let key in data) {
-          clinics.push({ ...data[key], id: key });
+          clinics.push({ ...data[key], id: +key });
         }
         return clinics;
       })

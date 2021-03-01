@@ -11,11 +11,11 @@ export class BranchesService {
   constructor(private http: HttpClient) { }
 
   getBranches() {
-    return this.http.get<BranchInterface[]>('http://localhost:22080/v1/branches').pipe(
+    return this.http.get<BranchInterface[]>('http://localhost:22080/v1/branches?expand=clinic').pipe(
       map((data) => {
         const branches: BranchInterface[] = [];
         for (let key in data) {
-          branches.push({ ...data[key], id: key });
+          branches.push({ ...data[key], id: +key });
         }
         return branches;
       })

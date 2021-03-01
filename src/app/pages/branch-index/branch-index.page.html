@@ -49,7 +49,7 @@
     <ion-item
       detail
       button
-      *ngFor="let branch of branches$ | async"
+      *ngFor="let branch of branchesFiltered$ | async"
       routerLink="/appo-form"
     >
       <ion-thumbnail slot="start">

@@ -3,6 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { BranchesService } from 'src/app/services/branches/branches.service';
+import { setErrorMessage } from '../shared/shared.actions';
 import { loadBranches, loadBranchesSuccess } from './branches.actions';
 
 
@@ -26,6 +27,11 @@ export class BranchEffects {
           return this.branchesService.getBranches().pipe(
             map((branches) => {
               return loadBranchesSuccess({ branches });
+            }),
+            catchError((error) => {
+              return of(
+                setErrorMessage({ message: error.message })
+              );
             })
           )
         }),
