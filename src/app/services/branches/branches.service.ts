@@ -15,10 +15,20 @@ export class BranchesService {
       map((data) => {
         const branches: BranchInterface[] = [];
         for (let key in data) {
+
+          data[key].schedule_starting = this.toTime(data[key].schedule_starting);
+          data[key].schedule_ending = this.toTime(data[key].schedule_ending);
+
           branches.push({ ...data[key] });
         }
         return branches;
       })
     );
+  }
+
+
+  toTime(timeString) {
+    var timeTokens = timeString.split(':');
+    return new Date(1970, 0, 1, timeTokens[0], timeTokens[1], timeTokens[2]);
   }
 }

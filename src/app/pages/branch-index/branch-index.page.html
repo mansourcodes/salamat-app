@@ -13,7 +13,7 @@
     <ion-grid class="ion-padding-horizontal">
       <ion-row>
         <ion-col>
-          <b class="title-text">Clinics</b>
+          <b class="title-text">Branches</b>
           <ion-img
             class="title-icons"
             src="assets\images\title_icons.svg"
@@ -24,26 +24,12 @@
     </ion-grid>
 
     <div class="ion-padding-horizontal subtitle-text">
-      Choose to Book <br />
-      Appoinment
+      this clinic have many branches
     </div>
   </div>
 
   <br />
   <br />
-  <!-- <ion-item lines="none">
-      <mat-form-field floatLabel="always" appearance="outline" class="w-100">
-        <mat-label>Search</mat-label>
-        <input matInput type="text" [(ngModel)]="searchValue" />
-        <mat-hint>Search by branch name.</mat-hint>
-        <mat-icon matSuffix *ngIf="searchValue" (click)="value=''">
-          <ion-icon name="close-outline"></ion-icon>
-        </mat-icon>
-        <mat-icon matSuffix *ngIf="!searchValue">
-          <ion-icon name="search"></ion-icon>
-        </mat-icon>
-      </mat-form-field>
-    </ion-item> -->
 
   <ion-list class="ion-padding-horizontal">
     <ion-item
@@ -56,10 +42,17 @@
         <img src="assets\images\no-image-clinic.png" />
       </ion-thumbnail>
       <ion-label>
-        <h2>{{branch.name}}</h2>
-        <h2>{{branch.name_alt}}</h2>
-        <p>Open: {{branch.schedule_starting}}</p>
-        <p>Close: {{branch.schedule_ending}}</p>
+        <h2>{{branch.clinic.name}} ({{branch.name}})</h2>
+        <h2>{{branch.clinic.name_alt}} ({{branch.name_alt}})</h2>
+        <div *ngIf="branch.schedule_starting != branch.schedule_ending">
+          <p>
+            Open: {{branch.schedule_starting | date:'h:mm a'}}, Close:
+            {{branch.schedule_ending | date:'h:mm a'}}
+          </p>
+        </div>
+        <div *ngIf="branch.schedule_starting == branch.schedule_ending">
+          <p>Open: 24 Hours</p>
+        </div>
       </ion-label>
     </ion-item>
   </ion-list>

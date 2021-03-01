@@ -7,8 +7,8 @@ export interface BranchInterface {
     name_alt: string;
     address: string;
     location: string;
-    schedule_starting: string;
-    schedule_ending: string;
+    schedule_starting: Date;
+    schedule_ending: Date;
     clinic: ClinicInterface;
 }
 
