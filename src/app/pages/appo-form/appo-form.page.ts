@@ -76,7 +76,7 @@ export class AppoFormPage implements OnInit {
 
   redirectHome() {
     this.router.navigateByUrl('/home');
-    this.presentToast('Form Expired!');
+    this.presentToast('Welcome Back');
   }
 
   async presentToast(message: string) {
