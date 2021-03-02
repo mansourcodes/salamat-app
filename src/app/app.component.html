@@ -1,5 +1,12 @@
 <ion-app>
   <loading-spinner *ngIf="showLoading$ | async"></loading-spinner>
-  <mainmenu></mainmenu>
-  <ion-router-outlet id="main"></ion-router-outlet>
+
+  <ion-split-pane when="sm" contentId="main-content">
+    <ion-menu contentId="main-content">
+      <ion-content>
+        <mainmenu></mainmenu>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>
