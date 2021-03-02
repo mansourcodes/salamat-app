@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs';
 import { AppState } from 'src/app/store/app.state';
 import { loadAppformBranch } from 'src/app/store/appoform/appoform.actions';
-import { getBranchId } from 'src/app/store/appoform/appoform.selectors';
+import { getBranchId, getClinicId, getDoctorId } from 'src/app/store/appoform/appoform.selectors';
 
 @Component({
   selector: 'app-appo-form',
@@ -23,18 +25,17 @@ export class AppoFormPage implements OnInit {
   ];
   DatePickerOptions: any;
 
-  constructor(private store: Store<AppState>, private router: Router) {
+  getDoctorIdSubscription: Subscription;
+  getClinicIdSubscription: Subscription;
+  getBranchIdSubscription: Subscription;
 
-  }
+
+  constructor(private store: Store<AppState>, private router: Router, public toastController: ToastController) { }
 
   ngOnInit() {
 
 
-    this.store.select(getBranchId).subscribe(branch_id => {
-      if (!branch_id) {
-        this.router.navigateByUrl('/home');
-      }
-    });
+    this.validateDoctor();
 
 
     this.DatePickerOptions = {
@@ -48,6 +49,53 @@ export class AppoFormPage implements OnInit {
           handler: () => true,
         },
       ],
-    };
+    }
+
+
+
+  }
+
+  validateDoctor() {
+    this.getBranchIdSubscription = this.store.select(getBranchId).subscribe(branch_id => {
+      if (!branch_id) {
+        this.redirectHome();
+      }
+    });
+    this.getClinicIdSubscription = this.store.select(getClinicId).subscribe(clinic_id => {
+      if (!clinic_id) {
+        this.redirectHome();
+      }
+    });
+    this.getDoctorIdSubscription = this.store.select(getDoctorId).subscribe(doctor_id => {
+      if (!doctor_id) {
+        this.redirectHome();
+      }
+    });
+  }
+
+
+  redirectHome() {
+    this.router.navigateByUrl('/home');
+    this.presentToast('Form Expired!');
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  ionViewWillLeave() {
+    if (this.getDoctorIdSubscription) {
+      this.getDoctorIdSubscription.unsubscribe();
+    }
+    if (this.getClinicIdSubscription) {
+      this.getClinicIdSubscription.unsubscribe();
+    }
+    if (this.getBranchIdSubscription) {
+      this.getBranchIdSubscription.unsubscribe();
+    }
   }
 }

@@ -14,11 +14,3 @@ export const getDoctors = createSelector(
     return state.doctors;
   }
 );
-
-
-export const getDoctorById = createSelector(
-  getDoctorsState,
-  (state: DoctorsState, props) => {
-    return state.doctors.find(doctor => doctor.id === props.id);
-  }
-);

@@ -15,10 +15,3 @@ export const getClinics = createSelector(
   }
 );
 
-
-export const getClinicById = createSelector(
-  getClinicsState,
-  (state: ClinicsState, props) => {
-    return state.clinics.find(clinic => clinic.id === props.id);
-  }
-);

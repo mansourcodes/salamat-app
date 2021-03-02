@@ -14,11 +14,3 @@ export const getSpecialities = createSelector(
     return state.specialities;
   }
 );
-
-
-export const getSpecialityById = createSelector(
-  getSpecialitiesState,
-  (state: SpecialitiesState, props) => {
-    return state.specialities.find(speciality => speciality.id === props.id);
-  }
-);

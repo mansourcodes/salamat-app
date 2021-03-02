@@ -7,7 +7,6 @@ import { DoctorInterface } from 'src/app/services/doctors/doctor';
 import { AppState } from 'src/app/store/app.state';
 import { getAppoformClinicId, loadAppformBranch, loadAppformClinic, loadAppformDoctor } from 'src/app/store/appoform/appoform.actions';
 import { getAppformBranch, getAppformClinic, getAppformDoctor, getBranchId, getClinicId, getDoctorId } from 'src/app/store/appoform/appoform.selectors';
-import { getClinicById } from 'src/app/store/clinics/clinics.selectors';
 
 @Component({
   selector: 'chosen-doctor',
