@@ -5,7 +5,7 @@ import { Observable, Subscription } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { DoctorInterface } from 'src/app/services/doctors/doctor';
 import { AppState } from 'src/app/store/app.state';
-import { getAppoformBranchId, getAppoformClinicId, setAppoformBranchId, setAppoformClinicId, setAppoformDoctorId } from 'src/app/store/appoform/appoform.actions';
+import { clearAppoformDoctor, getAppoformBranchId, getAppoformClinicId, setAppoformBranchId, setAppoformClinicId, setAppoformDoctorId } from 'src/app/store/appoform/appoform.actions';
 import { getBranchId, getClinicId } from 'src/app/store/appoform/appoform.selectors';
 import { loadDoctors } from 'src/app/store/doctors/doctors.actions';
 import { getDoctors } from 'src/app/store/doctors/doctors.selectors';
@@ -30,7 +30,7 @@ export class DoctorIndexPage implements OnInit {
   constructor(private store: Store<AppState>, private route: ActivatedRoute, private router: Router) { }
 
   ionViewWillEnter() {
-    this.store.dispatch(setAppoformDoctorId({ doctor_id: 0 }));
+    this.store.dispatch(clearAppoformDoctor());
   }
 
 

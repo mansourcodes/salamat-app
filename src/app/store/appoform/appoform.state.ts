@@ -6,13 +6,15 @@ export const appoformFeatureKey = 'appoform';
 
 export interface AppoformState {
 
+    clinic_id: number;
     clinic: ClinicInterface;
-    doctor: DoctorInterface;
+
+    branch_id: number;
     branch: BranchInterface;
 
-    clinic_id: number;
     doctor_id: number;
-    branch_id: number;
+    doctor: DoctorInterface;
+
     date: string;
     time: string;
     notes: string;
@@ -20,13 +22,16 @@ export interface AppoformState {
 }
 
 export const initialState: AppoformState = {
+    clinic_id: 0,
     clinic: null,
-    doctor: null,
+
+    branch_id: 0,
     branch: null,
 
-    clinic_id: 0,
-    branch_id: 0,
     doctor_id: 0,
+    doctor: null,
+
+
     date: '',
     time: '',
     notes: '',

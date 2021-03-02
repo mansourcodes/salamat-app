@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ClinicInterface } from 'src/app/services/clinics/clinic';
 import { AppState } from 'src/app/store/app.state';
-import { setAppoformBranchId, setAppoformClinicId } from 'src/app/store/appoform/appoform.actions';
+import { clearAppoformBranch, clearAppoformClinic, setAppoformBranchId, setAppoformClinicId } from 'src/app/store/appoform/appoform.actions';
 import { loadClinics } from 'src/app/store/clinics/clinics.actions';
 import { getClinics } from 'src/app/store/clinics/clinics.selectors';
 
@@ -21,8 +21,8 @@ export class ClinicIndexPage implements OnInit {
   constructor(private store: Store<AppState>, private router: Router) { }
 
   ionViewWillEnter() {
-    this.store.dispatch(setAppoformClinicId({ clinic_id: 0 }));
-    this.store.dispatch(setAppoformBranchId({ branch_id: 0 }));
+    this.store.dispatch(clearAppoformClinic());
+    this.store.dispatch(clearAppoformBranch());
   }
 
   ngOnInit() {

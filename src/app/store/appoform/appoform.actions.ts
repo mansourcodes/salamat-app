@@ -7,6 +7,20 @@ export const clearAppoform = createAction(
   '[Appoform] set Appo Form Cleared'
 );
 
+export const clearAppoformClinic = createAction(
+  '[Appoform] set Appo Form Clinic Cleared'
+);
+
+export const clearAppoformBranch = createAction(
+  '[Appoform] set Appo Form Branch Cleared'
+);
+
+
+export const clearAppoformDoctor = createAction(
+  '[Appoform] set Appo Form Doctor Cleared'
+);
+
+
 //-------------
 
 export const loadAppformClinic = createAction(

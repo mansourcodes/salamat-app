@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs/internal/Subscription';
 import { filter, map, tap } from 'rxjs/operators';
 import { BranchInterface } from 'src/app/services/branches/branch';
 import { AppState } from 'src/app/store/app.state';
-import { setAppoformBranchId, setAppoformClinicId } from 'src/app/store/appoform/appoform.actions';
+import { clearAppoformBranch, setAppoformBranchId, setAppoformClinicId } from 'src/app/store/appoform/appoform.actions';
 import { getDoctorId } from 'src/app/store/appoform/appoform.selectors';
 import { loadBranches } from 'src/app/store/branches/branches.actions';
 import { getBranches } from 'src/app/store/branches/branches.selectors';
@@ -30,7 +30,7 @@ export class BranchIndexPage implements OnInit {
   constructor(private store: Store<AppState>, private route: ActivatedRoute, private router: Router) { }
 
   ionViewWillEnter() {
-    this.store.dispatch(setAppoformBranchId({ branch_id: 0 }));
+    this.store.dispatch(clearAppoformBranch());
   }
 
 
