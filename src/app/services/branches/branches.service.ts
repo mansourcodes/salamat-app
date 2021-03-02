@@ -29,6 +29,22 @@ export class BranchesService {
     );
   }
 
+  getBranch(id: number) {
+    return this.http.get<BranchInterface>('http://localhost:22080/v1/branches/' + id).pipe(
+      map((data) => {
+
+        // data.doctors_ids = data.doctors.map(doctor => {
+        //   return doctor.id;
+        // })
+        data.schedule_starting = this.toTime(data.schedule_starting);
+        data.schedule_ending = this.toTime(data.schedule_ending);
+
+        const branches: BranchInterface = data;
+        return branches;
+      })
+    );
+  }
+
 
   toTime(timeString) {
     var timeTokens = timeString.split(':');

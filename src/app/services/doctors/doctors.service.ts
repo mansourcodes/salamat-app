@@ -25,4 +25,23 @@ export class DoctorsService {
       })
     );
   }
+
+  getDoctor(id: number) {
+    return this.http.get<DoctorInterface>('http://localhost:22080/v1/doctors/' + id).pipe(
+      map((data) => {
+        // data.branches_ids = data.branches.map(branch => {
+        //   return branch.id;
+        // })
+        const doctors: DoctorInterface = data;
+
+        return doctors;
+      })
+    );
+  }
+
+
+
+
+
+
 }

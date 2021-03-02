@@ -14,11 +14,3 @@ export const getBranches = createSelector(
     return state.branches;
   }
 );
-
-
-export const getBranchById = createSelector(
-  getBranchesState,
-  (state: BranchesState, props) => {
-    return state.branches.find(branch => branch.id === props.id);
-  }
-);

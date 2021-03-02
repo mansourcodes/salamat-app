@@ -1,6 +1,7 @@
 
 import { appoformReducer } from './appoform/appoform.reducer';
 import { appoformFeatureKey, AppoformState } from './appoform/appoform.state';
+import { AppoformEffects } from './appoform/appofrom.effects';
 import { AppoEffects } from './appos/appos.effects';
 import { apposReducer } from './appos/appos.reducer';
 import { apposFeatureKey, ApposState } from './appos/appos.state';
@@ -56,5 +57,5 @@ export const AppEffects = [
   SpecialityEffects,
   BranchEffects,
   AppoEffects,
-
+  AppoformEffects,
 ]

@@ -24,4 +24,15 @@ export class ClinicsService {
       })
     );
   }
+
+
+
+  getClinic(id: number) {
+    return this.http.get<ClinicInterface>('http://localhost:22080/v1/clinics/' + id + '?expand=branches').pipe(
+      map((data) => {
+        const clinics: ClinicInterface = data;
+        return clinics;
+      })
+    );
+  }
 }

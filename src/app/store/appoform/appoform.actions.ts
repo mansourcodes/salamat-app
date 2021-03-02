@@ -1,7 +1,61 @@
 import { createAction, props } from '@ngrx/store';
+import { BranchInterface } from 'src/app/services/branches/branch';
+import { ClinicInterface } from 'src/app/services/clinics/clinic';
+import { DoctorInterface } from 'src/app/services/doctors/doctor';
 
 export const clearAppoform = createAction(
   '[Appoform] set Appo Form Cleared'
+);
+
+//-------------
+
+export const loadAppformClinic = createAction(
+  '[Appoform] load Appo Form Clinic',
+  props<{ clinic_id: number }>()
+);
+
+export const loadAppformClinicSuccess = createAction(
+  '[Appoform] load Appo Form Clinic Success',
+  props<{ clinic: ClinicInterface }>()
+);
+
+export const loadAppformClinicFailure = createAction(
+  '[Appoform] load Appo Form Clinic Failure',
+  props<{ error: any }>()
+);
+
+//-------------
+
+export const loadAppformBranch = createAction(
+  '[Appoform] load Appo Form Branch',
+  props<{ branch_id: number }>()
+);
+
+export const loadAppformBranchSuccess = createAction(
+  '[Appoform] load Appo Form Branch Success',
+  props<{ branch: BranchInterface }>()
+);
+
+export const loadAppformBranchFailure = createAction(
+  '[Appoform] load Appo Form Branch Failure',
+  props<{ error: any }>()
+);
+
+//-------------
+
+export const loadAppformDoctor = createAction(
+  '[Appoform] load Appo Form Doctor',
+  props<{ doctor_id: number }>()
+);
+
+export const loadAppformDoctorSuccess = createAction(
+  '[Appoform] load Appo Form Doctor Success',
+  props<{ doctor: DoctorInterface }>()
+);
+
+export const loadAppformDoctorFailure = createAction(
+  '[Appoform] load Appo Form Doctor Failure',
+  props<{ error: any }>()
 );
 
 //-------------

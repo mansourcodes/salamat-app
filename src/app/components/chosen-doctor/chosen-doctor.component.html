@@ -1,16 +1,29 @@
 <ion-list class="ion-padding-horizontal">
   <ion-item>
     <ion-icon slot="start" color="primary" name="checkmark-circle"></ion-icon>
-    <ion-label
-      >Clinic: Aster <ion-icon name="location-sharp"></ion-icon> Manama
+    <ion-label> {{ (clinic$ | async)?.name }} </ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-icon slot="start" color="primary" name="checkmark-circle"></ion-icon>
+    <ion-label>
+      <ion-icon name="location-sharp"></ion-icon> {{ (branch$ | async)?.name }}
     </ion-label>
   </ion-item>
   <ion-item>
     <ion-icon slot="start" color="primary" name="checkmark-circle"></ion-icon>
-    <ion-label>Dr. Ali alasare</ion-label>
-  </ion-item>
-  <ion-item>
-    <ion-icon slot="start" color="primary" name="checkmark-circle"></ion-icon>
-    <ion-label>+973 36371725</ion-label>
+    <ion-thumbnail slot="start">
+      <img
+        class=""
+        *ngIf="(doctor$ | async)?.photo"
+        src="http://localhost:22080/v1/doctor/thumbnail/{{
+          (doctor$ | async)?.photo
+        }}"
+      />
+      <img
+        *ngIf="!(doctor$ | async)?.photo"
+        src="assets\images\no-image-doctor.png"
+      />
+    </ion-thumbnail>
+    <ion-label>{{ (doctor$ | async)?.name }}</ion-label>
   </ion-item>
 </ion-list>
