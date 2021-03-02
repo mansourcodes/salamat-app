@@ -46,7 +46,7 @@ export class ClinicsService {
 
     const fromCache = this.responseCache.get(url);
     if (fromCache) {
-      // return of(fromCache);
+      return of(fromCache);
     }
 
 
