@@ -8,6 +8,7 @@ import { DoctorIndexPageRoutingModule } from './doctor-index-routing.module';
 
 import { DoctorIndexPage } from './doctor-index.page';
 import { MaterialMiniFormModule } from '../../services/utilities/material/material-mini-form.module';
+import { ChosenDoctorModule } from 'src/app/components/chosen-doctor/chosen-doctor.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { MaterialMiniFormModule } from '../../services/utilities/material/materi
     DoctorIndexPageRoutingModule,
     MaterialMiniFormModule,
     ReactiveFormsModule,
+    ChosenDoctorModule,
   ],
   declarations: [DoctorIndexPage],
 })
-export class DoctorIndexPageModule {}
+export class DoctorIndexPageModule { }

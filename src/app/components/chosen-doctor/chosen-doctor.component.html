@@ -1,15 +1,21 @@
 <ion-list class="ion-padding-horizontal">
-  <ion-item>
+  <ion-item *ngIf="clinic$ | async">
     <ion-icon slot="start" color="primary" name="checkmark-circle"></ion-icon>
-    <ion-label> {{ (clinic$ | async)?.name }} </ion-label>
+    <ion-label>
+      {{ (clinic$ | async)?.name }}
+    </ion-label>
   </ion-item>
-  <ion-item>
+
+  <ion-item
+    *ngIf="(branch$ | async) && (clinic$ | async)?.branches?.length > 1"
+  >
     <ion-icon slot="start" color="primary" name="checkmark-circle"></ion-icon>
     <ion-label>
       <ion-icon name="location-sharp"></ion-icon> {{ (branch$ | async)?.name }}
     </ion-label>
   </ion-item>
-  <ion-item>
+
+  <ion-item *ngIf="doctor$ | async">
     <ion-icon slot="start" color="primary" name="checkmark-circle"></ion-icon>
     <ion-thumbnail slot="start">
       <img
