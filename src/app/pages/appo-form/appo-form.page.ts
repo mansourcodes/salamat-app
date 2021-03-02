@@ -13,17 +13,10 @@ import { getBranchId, getClinicId, getDoctorId } from 'src/app/store/appoform/ap
   styleUrls: ['./appo-form.page.scss'],
 })
 export class AppoFormPage implements OnInit {
-  DatePickerYearValues = [2020, 2016, 2008, 2004, 2000, 1996];
-  DatePickerDayNames = [
-    's\u00f8n',
-    'man',
-    'tir',
-    'ons',
-    'tor',
-    'fre',
-    'l\u00f8r',
-  ];
-  DatePickerOptions: any;
+
+  minDate: Date;
+  maxDate: Date;
+
 
   getDoctorIdSubscription: Subscription;
   getClinicIdSubscription: Subscription;
@@ -34,24 +27,12 @@ export class AppoFormPage implements OnInit {
 
   ngOnInit() {
 
+    const currentYear = new Date().getFullYear();
+    this.minDate = new Date();
+    this.maxDate = new Date(currentYear + 1, 11, 31);
+
 
     this.validateDoctor();
-
-
-    this.DatePickerOptions = {
-      buttons: [
-        {
-          text: 'Cancle',
-          handler: () => true,
-        },
-        {
-          text: 'Done',
-          handler: () => true,
-        },
-      ],
-    }
-
-
 
   }
 

@@ -8,6 +8,8 @@ import { AppoFormPageRoutingModule } from './appo-form-routing.module';
 
 import { AppoFormPage } from './appo-form.page';
 import { ChosenDoctorModule } from 'src/app/components/chosen-doctor/chosen-doctor.module';
+import { MaterialMiniFormModule } from 'src/app/services/utilities/material/material-mini-form.module';
+import { MaterialButtonsModule } from 'src/app/services/utilities/material/material-buttons.module';
 
 @NgModule({
   imports: [
@@ -15,7 +17,9 @@ import { ChosenDoctorModule } from 'src/app/components/chosen-doctor/chosen-doct
     FormsModule,
     IonicModule,
     AppoFormPageRoutingModule,
-    ChosenDoctorModule
+    ChosenDoctorModule,
+    MaterialMiniFormModule,
+    MaterialButtonsModule
   ],
   declarations: [AppoFormPage]
 })

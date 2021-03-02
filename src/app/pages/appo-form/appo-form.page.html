@@ -30,18 +30,19 @@
   <div class="ion-padding-horizontal">
     <h4>Appointment Details:</h4>
   </div>
+
+  <div class="ion-hide">
+    <input [min]="minDate" [max]="maxDate" [matDatepicker]="picker" />
+    <mat-datepicker touchUi #picker> </mat-datepicker>
+  </div>
+
   <ion-list class="ion-padding-horizontal">
-    <ion-item lines="full">
+    <ion-item lines="full" (click)="picker.open()">
       <ion-label>Date</ion-label>
-      <ion-datetime
-        [dayNames]="DatePickerDayNames"
-        [pickerOptions]="DatePickerOptions"
-        displayFormat="DDDD DD/MM/YYYY"
-        min="2020-12-19"
-        max="2021-12-09"
-        value="2021-09-23"
-      ></ion-datetime>
+      <ion-label class="ion-text-end">ss/ss/ssss</ion-label>
+      <ion-icon slot="end" name="calendar-outline"></ion-icon>
     </ion-item>
+
     <ion-item lines="full">
       <ion-label>Time</ion-label>
       <ion-select value="10:15pm" okText="Done" cancelText="Dismiss">
@@ -53,6 +54,7 @@
         <ion-select-option value="7:15pm">6:15pm</ion-select-option>
         <ion-select-option value="7:15pm">6:15pm</ion-select-option>
       </ion-select>
+      <ion-icon slot="end" name="alarm-outline"></ion-icon>
     </ion-item>
   </ion-list>
 
