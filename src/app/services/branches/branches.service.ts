@@ -1,17 +1,29 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { of } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 import { BranchInterface } from './branch';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BranchesService {
+  public responseCache = new Map();
 
   constructor(private http: HttpClient) { }
 
   getBranches() {
-    return this.http.get<BranchInterface[]>('http://localhost:22080/v1/branches?expand=clinic,doctors').pipe(
+
+    const url = 'http://localhost:22080/v1/branches?expand=clinic,doctors';
+
+    const fromCache = this.responseCache.get(url);
+    if (fromCache) {
+      return of(fromCache);
+    }
+
+
+
+    return this.http.get<BranchInterface[]>(url).pipe(
       map((data) => {
         const branches: BranchInterface[] = [];
         for (let key in data) {
@@ -25,12 +37,23 @@ export class BranchesService {
           branches.push({ ...data[key] });
         }
         return branches;
-      })
+      }),
+      tap(toCache => this.responseCache.set(url, toCache))
     );
   }
 
   getBranch(id: number) {
-    return this.http.get<BranchInterface>('http://localhost:22080/v1/branches/' + id).pipe(
+
+    const url = 'http://localhost:22080/v1/branches/' + id;
+
+    const fromCache = this.responseCache.get(url);
+    if (fromCache) {
+      return of(fromCache);
+    }
+
+
+
+    return this.http.get<BranchInterface>(url).pipe(
       map((data) => {
 
         // data.doctors_ids = data.doctors.map(doctor => {
@@ -41,7 +64,8 @@ export class BranchesService {
 
         const branches: BranchInterface = data;
         return branches;
-      })
+      }),
+      tap(toCache => this.responseCache.set(url, toCache))
     );
   }
 
