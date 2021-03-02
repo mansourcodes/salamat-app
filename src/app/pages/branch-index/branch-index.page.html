@@ -42,7 +42,7 @@
         <img src="assets\images\no-image-clinic.png" />
       </ion-thumbnail>
       <ion-label>
-        <h2>{{branch.clinic.name}} ({{branch.name}})</h2>
+        <h2>({{branch.name}}) {{branch.clinic.name}}</h2>
         <h2>{{branch.clinic.name_alt}} ({{branch.name_alt}})</h2>
         <div *ngIf="branch.schedule_starting != branch.schedule_ending">
           <p>

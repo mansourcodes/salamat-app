@@ -57,15 +57,33 @@ export class DoctorIndexPage implements OnInit {
         }
         return doctors;
       }),
-      filter(doctors => doctors && doctors.length > 0)
+      filter(doctors => doctors && doctors.length > 0),
     );
 
 
     this.store.dispatch(loadDoctors());
   }
 
-
-
+  search() {
+    this.doctorsFiltered$ = this.doctorsFiltered$.pipe(
+      map(doctors => {
+        if (!this.searchValue) {
+          return doctors;
+        }
+        return doctors.filter(singleDoctor => {
+          if (
+            singleDoctor.name.toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1
+            || singleDoctor.specialization.title.toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1
+            || singleDoctor.name_alt.indexOf(this.searchValue) > -1
+            || singleDoctor.specialization.title_ar.indexOf(this.searchValue) > -1
+          ) {
+            return true;
+          }
+          return false;
+        })
+      }),
+    );
+  }
 
   onChoose(doctor: DoctorInterface) {
 

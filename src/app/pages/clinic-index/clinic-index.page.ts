@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { ClinicInterface } from 'src/app/services/clinics/clinic';
 import { AppState } from 'src/app/store/app.state';
 import { setAppoformBranchId, setAppoformClinicId } from 'src/app/store/appoform/appoform.actions';
@@ -29,6 +30,25 @@ export class ClinicIndexPage implements OnInit {
     this.store.dispatch(loadClinics());
   }
 
+
+  search() {
+    this.clinics$ = this.clinics$.pipe(
+      map(clinics => {
+        if (!this.searchValue) {
+          return clinics;
+        }
+        return clinics.filter(singleClinic => {
+          if (
+            singleClinic.name.toLowerCase().indexOf(this.searchValue.toLowerCase()) > -1
+            || singleClinic.name_alt.indexOf(this.searchValue) > -1
+          ) {
+            return true;
+          }
+          return false;
+        })
+      }),
+    );
+  }
 
   onChoose(clinic: ClinicInterface) {
 
