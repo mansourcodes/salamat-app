@@ -15,9 +15,7 @@ export interface AppoformState {
     doctor_id: number;
     doctor: DoctorInterface;
 
-    date: string;
-    time: string;
-    notes: string;
+
 
 }
 
@@ -31,9 +29,5 @@ export const initialState: AppoformState = {
     doctor_id: 0,
     doctor: null,
 
-
-    date: '',
-    time: '',
-    notes: '',
 
 };

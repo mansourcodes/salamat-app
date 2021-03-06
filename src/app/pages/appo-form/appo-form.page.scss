@@ -2,3 +2,18 @@
   font-size: 2.5rem;
   line-height: 3rem;
 }
+
+.validation_note {
+  font-size: 12px;
+  line-height: 12px;
+  color: var(--ion-color-danger, red);
+  padding: 5px 3rem;
+}
+
+ion-label {
+  font-weight: bold;
+}
+
+.required-star {
+  color: var(--ion-color-danger, red);
+}
