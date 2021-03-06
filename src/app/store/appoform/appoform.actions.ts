@@ -89,20 +89,6 @@ export const setAppoformDoctorId = createAction(
   props<{ doctor_id: number }>()
 );
 
-export const setAppoformDate = createAction(
-  '[Appoform] set Appo Form Date',
-  props<{ date: string }>()
-);
-
-export const setAppoformTime = createAction(
-  '[Appoform] set Appo Form Date',
-  props<{ time: string }>()
-);
-
-export const setAppoformNotes = createAction(
-  '[Appoform] set Appo Form Date',
-  props<{ notes: string }>()
-);
 
 
 //-------------

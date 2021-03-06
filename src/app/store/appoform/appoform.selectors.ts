@@ -37,15 +37,3 @@ export const getBranchId = createSelector(getAppoformState, (state) => {
 export const getDoctorId = createSelector(getAppoformState, (state) => {
   return state.doctor_id;
 });
-
-export const getDate = createSelector(getAppoformState, (state) => {
-  return state.date;
-});
-
-export const getTime = createSelector(getAppoformState, (state) => {
-  return state.time;
-});
-
-export const getNotes = createSelector(getAppoformState, (state) => {
-  return state.notes;
-});
