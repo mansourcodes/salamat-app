@@ -6,12 +6,15 @@ import { ToastController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 import { filter, debounceTime, take, map, tap } from 'rxjs/operators';
+import { CountriesService } from 'src/app/services/countries/countries.service';
+import { CountryInterface } from 'src/app/services/countries/country';
 import { TimetableInterface } from 'src/app/services/timetables/timetable';
 import { AppState } from 'src/app/store/app.state';
 import { loadAppformBranch } from 'src/app/store/appoform/appoform.actions';
 import { getBranchId, getClinicId, getDoctorId } from 'src/app/store/appoform/appoform.selectors';
 import { loadTimetables } from 'src/app/store/timetables/timetables.actions';
 import { getTimetables } from 'src/app/store/timetables/timetables.selectors';
+
 
 @Component({
   selector: 'app-appo-form',
@@ -40,10 +43,23 @@ export class AppoFormPage implements OnInit {
   getBranchIdSubscription: Subscription;
   availableTimetablesSubscription: Subscription;
 
+  public countriesList: CountryInterface[];
 
-  constructor(private store: Store<AppState>, private router: Router, public toastController: ToastController) { }
+
+
+  constructor(
+    private store: Store<AppState>,
+    private router: Router,
+    public toastController: ToastController,
+    private countriesService: CountriesService
+  ) { }
 
   ngOnInit() {
+
+    this.countriesService.getCountries().subscribe(countries => {
+      this.countriesList = countries;
+    });
+
 
     const currentYear = new Date().getFullYear();
     this.minDate = new Date();
@@ -88,7 +104,7 @@ export class AppoFormPage implements OnInit {
           Validators.maxLength(9),
         ],
       }),
-      patient_nationality: new FormControl('bh', {
+      patient_nationality: new FormControl('BH', {
         validators: [Validators.required],
       }),
 

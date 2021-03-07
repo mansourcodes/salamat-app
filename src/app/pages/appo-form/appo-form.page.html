@@ -134,10 +134,13 @@
           cancelText="Dismiss"
           interface="popover"
         >
-          <ion-select-option value="bh">Bahrain</ion-select-option>
-          <ion-select-option value="blonde">Blonde</ion-select-option>
-          <ion-select-option value="black">Black</ion-select-option>
-          <ion-select-option value="other">Other</ion-select-option>
+          <ion-select-option value="BH">Bahrain</ion-select-option>
+          <ion-select-option
+            *ngFor="let country of countriesList "
+            [value]="country.code"
+          >
+            {{country.name}}
+          </ion-select-option>
         </ion-select>
       </ion-item>
 

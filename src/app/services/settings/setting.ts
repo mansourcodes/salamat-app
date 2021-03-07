@@ -1,13 +1,10 @@
-interface languageInterface {
+export interface LanguageInterface {
     text: string;
     key: string;
     flag: string
 }
 
 export interface SettingInterface {
-    language: languageInterface;
-    languageList: languageInterface[];
-}
-
-export class Setting {
+    language: LanguageInterface;
+    languageList: LanguageInterface[];
 }

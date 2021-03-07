@@ -15,3 +15,10 @@ export const getSettings = createSelector(
   }
 );
 
+export const getCurrentLang = createSelector(
+  getSettingsState,
+  (state) => {
+    return state.settings.language;
+  }
+);
+
