@@ -106,7 +106,7 @@
 
       <ion-item lines="full">
         <ion-label position="floating">
-          CPR:
+          Patient CPR:
           <span class="required-star">*</span>
         </ion-label>
         <ion-input
@@ -132,7 +132,7 @@
           value="bahrain"
           okText="Done"
           cancelText="Dismiss"
-          interface="action-sheet"
+          [interfaceOptions]="customAlertOptions"
         >
           <ion-select-option value="BH">Bahrain</ion-select-option>
           <ion-select-option

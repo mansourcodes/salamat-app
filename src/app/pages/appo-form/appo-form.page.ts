@@ -45,25 +45,36 @@ export class AppoFormPage implements OnInit {
 
   public countriesList: CountryInterface[];
 
-
+  customAlertOptions: any = {
+    header: 'Nationality',
+    subHeader: 'Select the Patient Nationality',
+    translucent: true
+  };
 
   constructor(
     private store: Store<AppState>,
     private router: Router,
     public toastController: ToastController,
     private countriesService: CountriesService
-  ) { }
+  ) {
+
+    const currentYear = new Date().getFullYear();
+    this.maxDate = new Date(currentYear + 1, 11, 31);
+    this.minDate = new Date();
+    if (this.minDate.getHours() > 17) {
+      this.minDate.setDate(this.minDate.getDate() + 1);
+      console.log(this.minDate.getHours());
+      console.log(this.minDate);
+      // TODO: set tommorow if 18 hours
+    }
+
+  }
 
   ngOnInit() {
 
     this.countriesService.getCountries().subscribe(countries => {
       this.countriesList = countries;
     });
-
-
-    const currentYear = new Date().getFullYear();
-    this.minDate = new Date();
-    this.maxDate = new Date(currentYear + 1, 11, 31);
 
     this.validateDoctor();
     this.initForm();
@@ -82,7 +93,7 @@ export class AppoFormPage implements OnInit {
         validators: [Validators.required],
       }),
 
-      date: new FormControl(new Date(), {
+      date: new FormControl(this.minDate, {
         validators: [Validators.required],
       }),
       time: new FormControl('', {
