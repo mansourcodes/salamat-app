@@ -1,20 +1,27 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { initialState, timetablesFeatureKey } from './timetables.state';
 import * as uuid from 'uuid';
-import { getTimetablesSuccess } from './timetables.actions';
+import { clearTimetables, loadTimetablesSuccess, } from './timetables.actions';
 
 
 
 const _timetablesReducer = createReducer(
   initialState,
 
-  on(getTimetablesSuccess, (state, action) => {
+  on(loadTimetablesSuccess, (state, action) => {
 
     return {
       ...state,
       [timetablesFeatureKey]: action.timetables
     }
 
+  }),
+
+  on(clearTimetables, (state, action) => {
+    return {
+      ...state,
+      ...initialState
+    };
   }),
 
 );

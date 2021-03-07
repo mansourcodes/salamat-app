@@ -4,11 +4,14 @@ import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { Store } from '@ngrx/store';
-import { Subscription } from 'rxjs';
-import { filter, debounceTime, take, map } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
+import { filter, debounceTime, take, map, tap } from 'rxjs/operators';
+import { TimetableInterface } from 'src/app/services/timetables/timetable';
 import { AppState } from 'src/app/store/app.state';
 import { loadAppformBranch } from 'src/app/store/appoform/appoform.actions';
 import { getBranchId, getClinicId, getDoctorId } from 'src/app/store/appoform/appoform.selectors';
+import { loadTimetables } from 'src/app/store/timetables/timetables.actions';
+import { getTimetables } from 'src/app/store/timetables/timetables.selectors';
 
 @Component({
   selector: 'app-appo-form',
@@ -17,12 +20,15 @@ import { getBranchId, getClinicId, getDoctorId } from 'src/app/store/appoform/ap
 })
 export class AppoFormPage implements OnInit {
   form: FormGroup;
+  // availableTimetables$: Observable<TimetableInterface[]>;
+  availableTimetables: TimetableInterface[];
+  flag_firtAvaliable: boolean = true;
+
 
   formInitState = {
     clinic_id: 1,
     branch_id: 1,
     doctor_id: 1,
-    date: new Date(),
   }
 
   minDate: Date;
@@ -32,6 +38,7 @@ export class AppoFormPage implements OnInit {
   getDoctorIdSubscription: Subscription;
   getClinicIdSubscription: Subscription;
   getBranchIdSubscription: Subscription;
+  availableTimetablesSubscription: Subscription;
 
 
   constructor(private store: Store<AppState>, private router: Router, public toastController: ToastController) { }
@@ -42,11 +49,8 @@ export class AppoFormPage implements OnInit {
     this.minDate = new Date();
     this.maxDate = new Date(currentYear + 1, 11, 31);
 
-
     this.validateDoctor();
     this.initForm();
-
-
   }
 
   initForm() {
@@ -62,7 +66,7 @@ export class AppoFormPage implements OnInit {
         validators: [Validators.required],
       }),
 
-      date: new FormControl(this.formInitState.date, {
+      date: new FormControl(new Date(), {
         validators: [Validators.required],
       }),
       time: new FormControl('', {
@@ -99,22 +103,46 @@ export class AppoFormPage implements OnInit {
     });
 
 
-    this.form.get('date').valueChanges.subscribe(chosenDate => {
-      console.log(chosenDate);
 
+    this.watchTimetable();
+
+
+  }
+
+  watchTimetable() {
+
+    this.availableTimetablesSubscription = this.store.select(getTimetables).pipe(
+      tap(timetables => {
+        this.flag_firtAvaliable = true;
+        this.form.patchValue({ time: null });
+      }),
+      map(timetables => {
+        timetables.map(singelTimetable => {
+          if (this.flag_firtAvaliable && singelTimetable.available) {
+            this.form.patchValue({ time: singelTimetable.appointmentTime });
+            this.flag_firtAvaliable = false;
+          }
+          return singelTimetable;
+        })
+        return timetables;
+      })
+    ).subscribe(timetables => {
+      this.availableTimetables = timetables;
+    })
+
+
+    this.form.get('date').valueChanges.subscribe(chosenDate => {
+
+      this.store.dispatch(loadTimetables({
+        date: chosenDate,
+        clinic_id: +this.form.value.clinic_id,
+        branch_id: +this.form.value.branch_id,
+        doctor_id: this.form.value.doctor_id
+      }));
 
     });
 
-
-    this.form.valueChanges
-      // .pipe(
-      //   debounceTime(100),
-      //   take(1),
-      // )
-      .subscribe(next => {
-
-      })
-
+    this.form.patchValue({ date: new Date() });
   }
 
   dateChanged(type: string, event: MatDatepickerInputEvent<Date>) {
@@ -174,6 +202,9 @@ export class AppoFormPage implements OnInit {
     }
     if (this.getBranchIdSubscription) {
       this.getBranchIdSubscription.unsubscribe();
+    }
+    if (this.availableTimetablesSubscription) {
+      this.availableTimetablesSubscription.unsubscribe();
     }
   }
 }

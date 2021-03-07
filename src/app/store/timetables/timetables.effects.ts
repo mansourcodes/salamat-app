@@ -4,7 +4,7 @@ import { of } from 'rxjs';
 import { mergeMap, map, catchError } from 'rxjs/operators';
 import { TimetablesService } from 'src/app/services/timetables/timetables.service';
 import { setErrorMessage } from '../shared/shared.actions';
-import { getTimetables, getTimetablesSuccess } from './timetables.actions';
+import { loadTimetables, loadTimetablesSuccess } from './timetables.actions';
 
 
 @Injectable()
@@ -21,12 +21,12 @@ export class TimetableEffects {
   loadTimetables$ = createEffect(
     () => {
       return this.actions$.pipe(
-        ofType(getTimetables),
+        ofType(loadTimetables),
         // mergeMap or exhaustMap
         mergeMap((action) => {
           return this.timetablesService.getTimetables(action.date, action.clinic_id, action.branch_id, action.doctor_id).pipe(
             map((timetables) => {
-              return getTimetablesSuccess({ timetables });
+              return loadTimetablesSuccess({ timetables });
             }),
             catchError((error) => {
               return of(

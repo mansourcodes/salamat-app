@@ -22,6 +22,9 @@ import { sharedFeatureKey, SharedState } from './shared/shared.state';
 import { SpecialityEffects } from './specialities/specialities.effects';
 import { specialitiesReducer } from './specialities/specialities.reducer';
 import { specialitiesFeatureKey, SpecialitiesState } from './specialities/specialities.state';
+import { TimetableEffects } from './timetables/timetables.effects';
+import { timetablesReducer } from './timetables/timetables.reducer';
+import { timetablesFeatureKey, TimetablesState } from './timetables/timetables.state';
 
 
 export interface AppState {
@@ -33,6 +36,7 @@ export interface AppState {
   [branchesFeatureKey]: BranchesState;
   [apposFeatureKey]: ApposState;
   [appoformFeatureKey]: AppoformState;
+  [timetablesFeatureKey]: TimetablesState;
 
 
 }
@@ -46,6 +50,7 @@ export const appReducers = {
   [branchesFeatureKey]: branchesReducer,
   [apposFeatureKey]: apposReducer,
   [appoformFeatureKey]: appoformReducer,
+  [timetablesFeatureKey]: timetablesReducer,
 
 };
 
@@ -58,4 +63,5 @@ export const AppEffects = [
   BranchEffects,
   AppoEffects,
   AppoformEffects,
+  TimetableEffects
 ]

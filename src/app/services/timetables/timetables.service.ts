@@ -15,13 +15,12 @@ export class TimetablesService {
 
   getTimetables(date: Date, clinic_id: number, branch_id: number, doctor_id: number) {
 
-    const url = 'http://localhost:22080/v1/timetables';
+    const url = `http://localhost:22080/v1/timetables?clinic_id=${clinic_id}&branch_id=${branch_id}&doctor_id=${doctor_id}&date=${this.formatDate(date)}`;
 
     const fromCache = this.responseCache.get(url);
     if (fromCache) {
       return of(fromCache);
     }
-
 
     const response = this.http.get<TimetableInterface[]>(url).pipe(
       map((data) => {
@@ -37,5 +36,18 @@ export class TimetablesService {
     return response;
   }
 
+  formatDate(date: Date) {
 
+    var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+
+    if (month.length < 2)
+      month = '0' + month;
+    if (day.length < 2)
+      day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
 }

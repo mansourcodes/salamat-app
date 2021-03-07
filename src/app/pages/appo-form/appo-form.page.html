@@ -52,15 +52,27 @@
 
       <ion-item lines="full">
         <ion-label>Time:</ion-label>
+
+        <ion-label *ngIf="flag_firtAvaliable">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          All Booked
+        </ion-label>
+
         <ion-select
+          *ngIf="!flag_firtAvaliable"
           formControlName="time"
           value="10:15pm"
           okText="Done"
           cancelText="Dismiss"
+          interface="popover"
         >
-          <ion-select-option value="10:15pm">10:15pm</ion-select-option>
-          <ion-select-option value="8:15pm">8:15pm</ion-select-option>
-          <ion-select-option value="7:15pm">7:15pm</ion-select-option>
+          <ion-select-option
+            *ngFor="let timetable of availableTimetables "
+            [value]="timetable.appointmentTime"
+            [disabled]="!timetable.available"
+          >
+            {{timetable.appointmentTime}}
+          </ion-select-option>
         </ion-select>
         <ion-icon slot="end" name="alarm-outline"></ion-icon>
       </ion-item>
@@ -120,6 +132,7 @@
           value="bahrain"
           okText="Done"
           cancelText="Dismiss"
+          interface="popover"
         >
           <ion-select-option value="bh">Bahrain</ion-select-option>
           <ion-select-option value="blonde">Blonde</ion-select-option>
