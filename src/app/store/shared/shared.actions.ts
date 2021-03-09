@@ -10,3 +10,4 @@ export const setErrorMessage = createAction(
   props<{ message: string }>()
 );
 
+export const dummyAction = createAction('[dummy action]');

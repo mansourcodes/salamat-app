@@ -15,18 +15,21 @@ export const loadApposFailure = createAction(
 );
 
 
-//createAppo
-export const createAppo = createAction(
-  '[Appo] create a Appo',
-  props<{ data: AppoInterface }>()
-);
+// //createAppo
+// export const createAppo = createAction(
+//   '[Appo] create a Appo',
+//   props<{ data: AppoInterface }>()
+// );
 
-export const createAppoSuccess = createAction(
-  '[Appo] create a Appo Success',
-  props<{ data: any }>()
-);
+// export const createAppoSuccess = createAction(
+//   '[Appo] create a Appo Success',
+//   props<{ data: any }>()
+// );
 
-export const createAppoFailure = createAction(
-  '[Appo] create a Appo Failure',
-  props<{ error: any }>()
-);
+// export const createAppoFailure = createAction(
+//   '[Appo] create a Appo Failure',
+//   props<{ error: any }>()
+// );
+
+
+

@@ -1,4 +1,5 @@
 
+import { routerReducer, RouterReducerState } from '@ngrx/router-store';
 import { appoformReducer } from './appoform/appoform.reducer';
 import { appoformFeatureKey, AppoformState } from './appoform/appoform.state';
 import { AppoformEffects } from './appoform/appofrom.effects';
@@ -37,6 +38,7 @@ export interface AppState {
   [apposFeatureKey]: ApposState;
   [appoformFeatureKey]: AppoformState;
   [timetablesFeatureKey]: TimetablesState;
+  router: RouterReducerState;
 
 
 }
@@ -51,6 +53,7 @@ export const appReducers = {
   [apposFeatureKey]: apposReducer,
   [appoformFeatureKey]: appoformReducer,
   [timetablesFeatureKey]: timetablesReducer,
+  router: routerReducer,
 
 };
 

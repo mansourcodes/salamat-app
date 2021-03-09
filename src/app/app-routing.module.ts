@@ -40,7 +40,7 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'appo-single',
+    path: 'appo-single/:id',
     loadChildren: () =>
       import('./pages/appo-single/appo-single.module').then(
         (m) => m.AppoSinglePageModule

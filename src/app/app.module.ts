@@ -23,6 +23,8 @@ import { LoadingSpinnerComponent } from './components/loading-spinner/loading-sp
 import { environment } from 'src/environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { CustomSerializer } from './store/router/custom-serializer';
 
 export function createTranslateHttpLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -42,6 +44,9 @@ export function createTranslateHttpLoader(http: HttpClient) {
     EffectsModule.forRoot(AppEffects),
     StoreModule.forRoot(appReducers),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
+    StoreRouterConnectingModule.forRoot({
+      serializer: CustomSerializer,
+    }),
 
     TranslateModule.forRoot({
       loader: {

@@ -4,6 +4,7 @@ export interface ClinicInterface {
     name_alt: string;
     logo: string;
     branches: { id: number; }[];
+    phone: string;
 }
 
 

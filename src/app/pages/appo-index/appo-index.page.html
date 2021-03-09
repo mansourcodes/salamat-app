@@ -36,17 +36,17 @@
       detail
       button
       *ngFor="let appo of appos$ | async"
-      routerLink="/appo-single"
+      [routerLink]="['/appo-single/',appo.id]"
     >
-      <ion-note class="date-and-time" slot="start" color="primary">
-        {{appo.date}}<br />
-        {{appo.time}}
+      <ion-note class="date-and-time ion-text-end" slot="end" color="primary">
+        {{appo.date | date:'EEEE, MMM d' }} <br />
+        {{appo.time | date:"shortTime"}}
       </ion-note>
       <ion-label>
-        <h2>... {{appo.patient_id}}</h2>
-        <ion-note> Clinic {{appo.branch_id}}, Dr. {{appo.doctor_id}} </ion-note>
+        <h2>{{appo.patient.name}}</h2>
+        <ion-note> {{appo.branch.clinic.name}}, {{appo.doctor.name}} </ion-note>
       </ion-label>
-      <ion-badge slot="end">new</ion-badge>
+      <!-- <ion-badge slot="end">new</ion-badge> -->
     </ion-item>
   </ion-list>
 </ion-content>

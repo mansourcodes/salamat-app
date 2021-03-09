@@ -1,3 +1,7 @@
+import { UserInterface } from "../auth/user.model";
+import { BranchInterface } from "../branches/branch";
+import { DoctorInterface } from "../doctors/doctor";
+import { PatientInterface } from "../patient/patient";
 
 export interface AppoInterface {
 
@@ -5,8 +9,8 @@ export interface AppoInterface {
     patient_id: number;
     doctor_id: number;
     branch_id: number;
-    date: string;
-    time: string;
+    date: Date;
+    time: Date;
     notes: string;
 
 
@@ -22,4 +26,9 @@ export interface AppoInterface {
     check_in_at?: string;
     invoice_id?: string;
     source?: string;
+
+    patient: PatientInterface;
+    branch: BranchInterface;
+    doctor: DoctorInterface;
+    createdBy: UserInterface;
 }

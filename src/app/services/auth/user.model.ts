@@ -1,8 +1,8 @@
-export class User {
+export class UserInterface {
     constructor(
         public _id: string,
         public email: string,
-        public businessId: string,
+        public phone: string,
         private _token: string,
         private tokenExpirationDate: Date
     ) { }
