@@ -134,18 +134,12 @@ export class AppoFormPage implements OnInit {
       }),
 
       notes: new FormControl(''),
-      addressLine2: new FormControl(
-        ''
-      ),
 
       agree_terms: new FormControl(false, {
         validators: [Validators.requiredTrue],
       }),
     });
 
-    console.log('date');
-
-    console.log(this.form.value.date);
 
     this.watchTimetable();
 
