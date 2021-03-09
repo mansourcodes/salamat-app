@@ -83,6 +83,15 @@
     </div>
 
     <ion-list class="ion-padding-horizontal">
+      <div
+        color="danger"
+        class="validation_note"
+        *ngIf="form.get('user_phone').invalid && (form.get('user_phone').dirty || form.get('user_phone').touched)"
+      >
+        <ion-icon name="information-circle-outline"></ion-icon>
+        Phone Number Must be at least 8 digits
+      </div>
+
       <ion-item lines="full">
         <ion-label position="floating">
           Patient Name:
@@ -128,6 +137,7 @@
       <ion-item lines="full">
         <ion-label>Nationality:</ion-label>
         <ion-select
+          class="seletor"
           formControlName="patient_nationality"
           value="bahrain"
           okText="Done"
@@ -152,6 +162,41 @@
           placeholder="Enter any notes here..."
           formControlName="notes"
         ></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding-horizontal">
+      <h4>Contact Details:</h4>
+    </div>
+
+    <ion-list class="ion-padding-horizontal">
+      <ion-item lines="full">
+        <ion-label position="floating">
+          Phone Number:
+          <span class="required-star">*</span>
+        </ion-label>
+        <ion-row class="w-100">
+          <ion-col size="4" size-sm size="6">
+            <ion-select
+              class="seletor"
+              formControlName="user_phone_code"
+              value="bahrain"
+              okText="Done"
+              cancelText="Dismiss"
+              interface="popover"
+            >
+              <ion-select-option value="973">Bahrain +973 </ion-select-option>
+              <ion-select-option value="966">Saudi +966 </ion-select-option>
+            </ion-select>
+          </ion-col>
+          <ion-col>
+            <ion-input
+              clearInput
+              formControlName="user_phone"
+              placeholder="Enter Your Phone ..."
+            ></ion-input>
+          </ion-col>
+        </ion-row>
       </ion-item>
 
       <ion-item lines="full">

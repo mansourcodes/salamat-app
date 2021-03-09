@@ -61,12 +61,14 @@ export class AppoFormPage implements OnInit {
     const currentYear = new Date().getFullYear();
     this.maxDate = new Date(currentYear + 1, 11, 31);
     this.minDate = new Date();
-    if (this.minDate.getHours() > 17) {
-      this.minDate.setDate(this.minDate.getDate() + 1);
-      console.log(this.minDate.getHours());
-      console.log(this.minDate);
-      // TODO: set tommorow if 18 hours
-    }
+
+    // if (this.minDate.getHours() > 17) {
+    //   this.minDate = new Date();
+    //   this.minDate.setDate(this.minDate.getDate() + 2);
+    //   console.log(this.minDate.getHours());
+    //   console.log(this.minDate);
+    //   // TODO: set tommorow if 18 hours
+    // } 
 
   }
 
@@ -83,6 +85,18 @@ export class AppoFormPage implements OnInit {
   initForm() {
 
     this.form = new FormGroup({
+
+      user_phone: new FormControl('', {
+        validators: [
+          Validators.required,
+          Validators.minLength(8)
+        ],
+      }),
+      user_phone_code: new FormControl('973', {
+        validators: [Validators.required],
+      }),
+
+
       clinic_id: new FormControl(this.formInitState.clinic_id, {
         validators: [Validators.required],
       }),
@@ -129,7 +143,9 @@ export class AppoFormPage implements OnInit {
       }),
     });
 
+    console.log('date');
 
+    console.log(this.form.value.date);
 
     this.watchTimetable();
 

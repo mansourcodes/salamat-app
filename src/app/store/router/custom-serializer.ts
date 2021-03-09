@@ -20,8 +20,6 @@ export class CustomSerializer implements RouterStateSerializer<RouterStateUrl> {
             root: { queryParams },
         } = routerState;
         const { params } = route;
-        console.log(params);
-        console.log('hdhdhdhdhhd');
 
         // Only return an object including the URL, params and query params
         // instead of the entire snapshot
